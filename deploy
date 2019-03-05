@@ -1,0 +1,75 @@
+#!/usr/bin/env python3
+
+from string import Template
+import toml
+import os
+import shutil
+import fire
+
+
+class Deploy:
+    def __init__(self):
+        with open("config.toml") as config_file:
+            self.config = toml.load(config_file)
+
+        self.projects = self.config["settings"]["projects"]
+        self.files = self.config["settings"]["files"]
+        self.profiles = self._get_profiles()
+
+    def _get_profiles(self):
+        profiles = {"__default__": {}}
+        # create dictionary of profiles
+        for key in self.config["profile"].keys():
+            if isinstance(self.config["profile"][key], dict):
+                profiles[key] = self.config["profile"][key]
+            else:
+                profiles["__default__"][key] = self.config["profile"][key]
+        # fall back on defaults
+        non_defaults = [
+            profile for profile in profiles.keys() if profile != "__default__"
+        ]
+        for profile in non_defaults:
+            for key in profiles["__default__"]:
+                if key not in profiles[profile].keys():
+                    profiles[profile][key] = profiles["__default__"][key]
+        return profiles
+
+    def _deploy(self, projects, profiles, prefix_project):
+        for project in projects:
+            for profile in profiles:
+                new_path = (
+                    f"{project}_{profile}" if prefix_project else f"{profile}_{project}"
+                )
+                try:
+                    shutil.rmtree(new_path)
+                except FileNotFoundError:
+                    pass
+                os.mkdir(new_path)
+                old_files = os.listdir(project)
+                for file_ in old_files:
+                    full_name = os.path.join(project, file_)
+                    new_name = os.path.join(new_path, file_)
+                    if file_ in self.files[project]:
+                        with open(full_name) as f:
+                            tmp = Template(f.read())
+                        new = tmp.safe_substitute(self.profiles[profile])
+                        with open(new_name, "w") as f:
+                            f.write(new)
+                    else:
+                        os.symlink(full_name, new_name)
+
+    def dispatch(self, project, profile, prefix_project=True):
+        if isinstance(profile, str):
+            profiles = [profile]
+        else:
+            profiles = profile
+        if isinstance(project, str):
+            projects = [project]
+        else:
+            projects = project
+        self._deploy(projects, profiles, prefix_project)
+
+
+if __name__ == "__main__":
+    d = Deploy()
+    fire.Fire(d.dispatch)

@@ -2,7 +2,8 @@
 title = "config.toml"
 
 [settings]
-files = ['testfile']
+projects = ['test']
+files.test = ['testfile']
 
 [profile]
 hello = 'aloha'
