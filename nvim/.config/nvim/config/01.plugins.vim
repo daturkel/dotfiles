@@ -34,4 +34,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     " fzf search
     Plug 'junegunn/fzf.vim'
+    " TOML syntax
+    Plug 'cespare/vim-toml'
 call plug#end()
