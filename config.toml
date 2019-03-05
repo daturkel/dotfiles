@@ -1,0 +1,15 @@
+# Configure profiles for customizing dotfiles
+title = "config.toml"
+
+[settings]
+files = ['testfile']
+
+[profile]
+hello = 'aloha'
+
+[profile.home]
+home_dir = '/Users/danturkel/'
+
+[profile.work]
+home_dir = '/Users/dturkel/'
+hello = 'greetings'
