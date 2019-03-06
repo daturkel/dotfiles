@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=${home_dir}.oh-my-zsh
+export ZSH=/Users/dturkel/.oh-my-zsh
 
 export EDITOR="/usr/local/bin/nvim"
 
@@ -70,7 +70,7 @@ bindkey -M viins "$terminfo[kcud1]" history-beginning-search-forward
 
 # User configuration
 
-export PATH=$zsh_path
+export PATH=/usr/local/clang6/bin:$HOME/.jenv/bin:$HOME/anaconda/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/git/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/drush:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:/usr/X11/bin:/usr/texbin:/sw/bin:$HOME/.rvm/bin:$HOME/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -100,7 +100,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim='nvim'
-$aliases
+alias gxs='cd ~/Documents/Repos/xfl-scripts/'
+alias dsu='source activate ds-sandbox'
+alias p='cd ~/Documents/Projects'
+alias dp='cd ~/Documents/DS_Projects'
+alias pix='ssh pixel01.s.dfw.rtrdc.net'
+
 
 function gline() {
     if [ "$1" != "" ]
@@ -122,4 +127,7 @@ export FZF_DEFAULT_OPTS="--preview '[[ \$(file --mime {}) = binary ]] &&
 #                  cat {}) 2> /dev/null | head -500'"
 #export FZF_CTRL_R_OPTS="--no-preview"
 #export FZF_ALT_C_OPTS="--preview 'ls {} | head -100'"
-$misc_exports
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+eval "$(jenv init -)"
+export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+

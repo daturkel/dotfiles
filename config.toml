@@ -2,15 +2,33 @@
 title = "config.toml"
 
 [settings]
-projects = ['test']
-files.test = ['testfile']
+projects = ['zsh']
+files.zsh = ['.zshrc']
 
 [profile]
-hello = 'aloha'
 
 [profile.home]
 home_dir = '/Users/danturkel/'
+zsh_path = '/Users/danturkel/anaconda3/bin:/Library/Frameworks/GDAL.framework/Programs:/usr/local/bin:/Users/danturkel/.rvm/gems/ruby-2.1.1/bin:/Users/danturkel/.rvm/gems/ruby-2.1.1@global/bin:/Users/danturkel/.rvm/rubies/ruby-2.1.1/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/MacGPG2/bin:/Library/TeX/texbin:/Applications/sage:/usr/local/sbin:/usr/local/drush:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:/usr/X11/bin:/Users/danturkel/.rvm/gems/ruby-2.0.0-p247/bin:/usr/texbin:/sw/bin:/Users/danturkel/.rvm/bin:/usr/local/opt/fzf/bin'
+aliases="""
+alias pydir='cd ~/Documents/Code/Python'
+alias web='cd ~/Documents/Web/dtm2018'
+"""
+misc_exports = ''
+
 
 [profile.work]
 home_dir = '/Users/dturkel/'
-hello = 'greetings'
+zsh_path = '/usr/local/clang6/bin:$HOME/.jenv/bin:$HOME/anaconda/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/git/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/drush:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:/usr/X11/bin:/usr/texbin:/sw/bin:$HOME/.rvm/bin:$HOME/bin'
+aliases = """
+alias gxs='cd ~/Documents/Repos/xfl-scripts/'
+alias dsu='source activate ds-sandbox'
+alias p='cd ~/Documents/Projects'
+alias dp='cd ~/Documents/DS_Projects'
+alias pix='ssh pixel01.s.dfw.rtrdc.net'
+"""
+misc_exports = '''
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+eval "$(jenv init -)"
+export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+'''

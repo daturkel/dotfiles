@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=${home_dir}.oh-my-zsh
+export ZSH=/Users/danturkel/.oh-my-zsh
 
 export EDITOR="/usr/local/bin/nvim"
 
@@ -70,7 +70,7 @@ bindkey -M viins "$terminfo[kcud1]" history-beginning-search-forward
 
 # User configuration
 
-export PATH=$zsh_path
+export PATH=/Users/danturkel/anaconda3/bin:/Library/Frameworks/GDAL.framework/Programs:/usr/local/bin:/Users/danturkel/.rvm/gems/ruby-2.1.1/bin:/Users/danturkel/.rvm/gems/ruby-2.1.1@global/bin:/Users/danturkel/.rvm/rubies/ruby-2.1.1/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/MacGPG2/bin:/Library/TeX/texbin:/Applications/sage:/usr/local/sbin:/usr/local/drush:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:/usr/X11/bin:/Users/danturkel/.rvm/gems/ruby-2.0.0-p247/bin:/usr/texbin:/sw/bin:/Users/danturkel/.rvm/bin:/usr/local/opt/fzf/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -100,7 +100,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim='nvim'
-$aliases
+alias pydir='cd ~/Documents/Code/Python'
+alias web='cd ~/Documents/Web/dtm2018'
+
 
 function gline() {
     if [ "$1" != "" ]
@@ -122,4 +124,4 @@ export FZF_DEFAULT_OPTS="--preview '[[ \$(file --mime {}) = binary ]] &&
 #                  cat {}) 2> /dev/null | head -500'"
 #export FZF_CTRL_R_OPTS="--no-preview"
 #export FZF_ALT_C_OPTS="--preview 'ls {} | head -100'"
-$misc_exports
+
