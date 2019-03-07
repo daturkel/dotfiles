@@ -1,0 +1,1 @@
+/Users/danturkel/.dotfiles/nvim/.config/nvim/autoload/plug.vim

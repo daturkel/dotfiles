@@ -2,7 +2,7 @@ function! DoRemote(arg)
     UpdateRemotePlugins
 endfunction
 
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.config/nvim_plugins')
     " start-page for vim
     Plug 'mhinz/vim-startify'
     " needed for some remote plugins

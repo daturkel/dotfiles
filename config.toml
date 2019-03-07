@@ -2,8 +2,9 @@
 title = "config.toml"
 
 [settings]
-projects = ['zsh']
+projects = ['zsh','nvim']
 files.zsh = ['.zshrc']
+files.nvim = ['.config/nvim/config/02.init.vim']
 
 [profile]
 
