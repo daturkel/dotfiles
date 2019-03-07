@@ -1,1 +1,0 @@
-/Users/danturkel/.dotfiles/nvim/.config/nvim/config/07.black.vim
