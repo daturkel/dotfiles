@@ -1,0 +1,1 @@
+/Users/dturkel/.dotfiles/nvim/.config/nvim/colors/vombato.vim

@@ -1,0 +1,1 @@
+/Users/dturkel/.dotfiles/nvim/.config/nvim/config/04.startify.vim
