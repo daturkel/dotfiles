@@ -1,1 +1,1 @@
-/Users/danturkel/.dotfiles/nvim/.config/nvim/autoload/plug.vim
+/Users/dturkel/.dotfiles/nvim/.config/nvim/autoload/plug.vim

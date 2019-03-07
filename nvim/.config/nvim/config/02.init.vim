@@ -1,6 +1,6 @@
 " tell vim where to find python (can't use ~/ alias here for some reason)
-let g:python_host_prog='/Users/danturkel/anaconda3/envs/py2/bin/python'
-let g:python3_host_prog='/Users/danturkel/anaconda3/bin/python'
+let g:python_host_prog='${py2_loc}'
+let g:python3_host_prog='${py3_loc}'
 
 " Must be early
 let maplocalleader = ","

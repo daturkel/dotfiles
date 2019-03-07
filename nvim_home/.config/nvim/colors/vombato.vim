@@ -1,1 +1,1 @@
-/Users/danturkel/.dotfiles/nvim/.config/nvim/colors/vombato.vim
+/Users/dturkel/.dotfiles/nvim/.config/nvim/colors/vombato.vim

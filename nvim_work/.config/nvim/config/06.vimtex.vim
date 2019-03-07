@@ -1,1 +1,1 @@
-/Users/danturkel/.dotfiles/nvim/.config/nvim/config/06.vimtex.vim
+/Users/dturkel/.dotfiles/nvim/.config/nvim/config/06.vimtex.vim

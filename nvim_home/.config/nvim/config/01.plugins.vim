@@ -1,1 +1,1 @@
-/Users/danturkel/.dotfiles/nvim/.config/nvim/config/01.plugins.vim
+/Users/dturkel/.dotfiles/nvim/.config/nvim/config/01.plugins.vim
