@@ -2,9 +2,11 @@
 
 from string import Template
 import toml
+import pathlib
 import os
 import shutil
 import fire
+import re
 
 
 class Deploy:
@@ -44,19 +46,29 @@ class Deploy:
                     shutil.rmtree(new_path)
                 except FileNotFoundError:
                     pass
-                os.mkdir(new_path)
-                old_files = os.listdir(project)
+                shutil.copytree(project, new_path, ignore=self._ignore_files)
+                old_files = []
+                for root, directory, files in os.walk(project):
+                    for file_ in files:
+                        old_files.append(os.path.join(root, file_))
+                old_files = [file_ for file_ in old_files if os.path.isfile(file_)]
                 for file_ in old_files:
-                    full_name = os.path.join(project, file_)
-                    new_name = os.path.join(new_path, file_)
-                    if file_ in self.files[project]:
-                        with open(full_name) as f:
+                    old_file = re.search(r"[^/]+/(.*)", file_).group(1)
+                    new_name = os.path.join(new_path, old_file)
+                    if old_file in self.files[project]:
+                        with open(file_) as f:
                             tmp = Template(f.read())
                         new = tmp.safe_substitute(self.profiles[profile])
                         with open(new_name, "w") as f:
                             f.write(new)
                     else:
-                        os.symlink(full_name, new_name)
+                        os.symlink(
+                            os.path.join(pathlib.Path.cwd(), pathlib.Path(file_)),
+                            pathlib.Path(new_name),
+                        )
+
+    def _ignore_files(self, directory, files):
+        return [f for f in files if os.path.isfile(os.path.join(directory, f))]
 
     def dispatch(self, project, profile, prefix_project=True):
         if isinstance(profile, str):
