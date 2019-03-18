@@ -100,7 +100,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim='nvim'
-alias gd='git diff --name-status master...'
+alias gd='git diff --name-status master... | cat'
 alias gxs='cd ~/Documents/Repos/xfl-scripts/'
 alias dsu='source activate ds-sandbox'
 alias p='cd ~/Documents/Projects'
