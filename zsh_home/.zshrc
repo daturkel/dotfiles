@@ -100,7 +100,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim='nvim'
-alias gd='git diff --name-status master...'
+alias gd='git diff --name-status master... | cat'
 alias pydir='cd ~/Documents/Code/Python'
 alias web='cd ~/Documents/Web/dtm2018'
 
