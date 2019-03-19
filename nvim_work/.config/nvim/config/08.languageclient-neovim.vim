@@ -1,1 +1,8 @@
-/Users/dturkel/.dotfiles/nvim/.config/nvim/config/08.languageclient-neovim.vim
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['/Users/dturkel/anaconda/bin/pyls'],
+    \ }
+
+let g:LanguageClient_settingsPath="/Users/dturkel/.config/nvim/ls_settings.json"
