@@ -108,7 +108,7 @@ alias web='cd ~/Documents/Web/dtm2018'
 function gline() {
     if [ "$1" != "" ]
     then
-        grep -ric "$1" . | grep -v ':0$'
+        grep -ri "$1" . | grep -v ':0$'
     else
         echo 'error: please supply pattern argument'
     fi
