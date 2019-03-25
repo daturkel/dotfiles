@@ -111,7 +111,7 @@ alias pix='ssh pixel01.s.dfw.rtrdc.net'
 function gline() {
     if [ "$1" != "" ]
     then
-        grep -ri "$1" . | grep -v ':0$'
+        grep -ril "$1" . | grep -v ':0$'
     else
         echo 'error: please supply pattern argument'
     fi
