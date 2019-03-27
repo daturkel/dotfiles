@@ -106,7 +106,7 @@ $aliases
 function gline() {
     if [ "$1" != "" ]
     then
-        grep -ric "$1" . | grep -v ':0$'
+        grep -ril "$1" . | grep -v ':0$'
     else
         echo 'error: please supply pattern argument'
     fi
