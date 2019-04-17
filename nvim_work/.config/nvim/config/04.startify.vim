@@ -1,1 +1,1 @@
-/Users/dturkel/.dotfiles/nvim/.config/nvim/config/04.startify.vim
+/Users/danturkel/.dotfiles/nvim/.config/nvim/config/04.startify.vim

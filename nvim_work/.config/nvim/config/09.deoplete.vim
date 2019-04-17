@@ -1,1 +1,1 @@
-/Users/dturkel/.dotfiles/nvim/.config/nvim/config/09.deoplete.vim
+/Users/danturkel/.dotfiles/nvim/.config/nvim/config/09.deoplete.vim

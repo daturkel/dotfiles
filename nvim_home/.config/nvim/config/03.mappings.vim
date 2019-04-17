@@ -1,1 +1,1 @@
-/Users/dturkel/.dotfiles/nvim/.config/nvim/config/03.mappings.vim
+/Users/danturkel/.dotfiles/nvim/.config/nvim/config/03.mappings.vim
