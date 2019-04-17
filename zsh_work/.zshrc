@@ -3,6 +3,8 @@ export ZSH=/Users/dturkel/.oh-my-zsh
 
 export EDITOR="/usr/local/bin/nvim"
 
+export BROWSER="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
