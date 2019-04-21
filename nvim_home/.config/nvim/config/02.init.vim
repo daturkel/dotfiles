@@ -5,6 +5,9 @@ let g:python3_host_prog='/Users/danturkel/anaconda3/bin/python'
 " Must be early
 let maplocalleader = ","
 
+"" better windowing
+set hidden
+
 "" behavior
 " scroll padding 5 lines
 set so=5

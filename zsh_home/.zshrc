@@ -128,3 +128,5 @@ export FZF_DEFAULT_OPTS="--preview '[[ \$(file --mime {}) = binary ]] &&
 #export FZF_CTRL_R_OPTS="--no-preview"
 #export FZF_ALT_C_OPTS="--preview 'ls {} | head -100'"
 
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

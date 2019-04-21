@@ -5,6 +5,9 @@ let g:python3_host_prog='${py3_loc}'
 " Must be early
 let maplocalleader = ","
 
+"" better windowing
+set hidden
+
 "" behavior
 " scroll padding 5 lines
 set so=5
