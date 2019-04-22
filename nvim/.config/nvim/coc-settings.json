@@ -1,7 +1,6 @@
 {
     "python.formatting.provider": "black",
     "python.linting.enabled": false,
-    "suggest.noselect": false,
     "python.terminal.activateEnvironment": false,
     "python.terminal.executeInFileDir": true
 }

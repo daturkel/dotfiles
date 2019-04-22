@@ -67,8 +67,11 @@ colorscheme wombat256mod
 set showmatch
 
 "" terminal
-" escape leaves terminal mode
-tnoremap <Esc> <C-\><C-n>
+" escape leaves terminal mode, also leaves fzf
+if has("nvim")
+  au TermOpen * tnoremap <Esc> <c-\><c-n>
+  au FileType fzf tunmap <Esc>
+endif
 " enter insert mode when entering terminal
 autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
