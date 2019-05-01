@@ -2,5 +2,10 @@
     "python.formatting.provider": "black",
     "python.linting.enabled": false,
     "python.terminal.activateEnvironment": false,
-    "python.terminal.executeInFileDir": true
+    "python.terminal.executeInFileDir": true,
+    "python.pythonPath": "~/anaconda/bin/python",
+    "coc.source.around.disableSyntaxes": ["comment","string"],
+    "coc.source.buffer.disableSyntaxes": ["comment","string"],
+    "suggest.autoTrigger": "trigger"
+
 }
