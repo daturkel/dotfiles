@@ -9,7 +9,7 @@ export BROWSER="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="geoffgarside"
+ZSH_THEME="uncommon"
 
 # Change behavior of up arrow
 bindkey '^[[A' up-line-or-history
@@ -58,7 +58,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(colored-man-pages vi-mode colorize)
+plugins=(vi-mode colorize shrink-path ripgrep)
 
 # make vi mode transition faster
 export KEYTIMEOUT=1
