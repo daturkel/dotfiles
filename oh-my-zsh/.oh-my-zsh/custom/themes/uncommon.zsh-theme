@@ -102,11 +102,15 @@ uncommon_git_status() {
 ## not currently configurable
 # (this line disables built-in prompt manipulation in virtual_env/bin/activate scripts)
 export VIRTUAL_ENV_DISABLE_PROMPT=1
+# if you are using anaconda for your environments, run "conda config --set changeps1 False"
+# or add "changeps1: False" to your .condarc file
 uncommon_venv() {
     local message=""
     if [[ -n ${VIRTUAL_ENV} ]]; then
         [[ ${VIRTUAL_ENV} =~ '[^\/]*$' ]]
         message="${MATCH}"
+    elif [[ -n $CONDA_DEFAULT_ENV ]]; then
+        message="${CONDA_DEFAULT_ENV}"
     fi
     export CV="${message}"
     echo -n "${message}"
