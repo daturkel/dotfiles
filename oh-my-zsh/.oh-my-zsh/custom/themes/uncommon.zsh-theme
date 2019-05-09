@@ -1,14 +1,35 @@
-# vim: filetype=sh
+# vim: filetype=zsh
 
-# heavily modified version of common.zsh-theme
+# uncommon is a fork of common, a theme by jack harrison-sherlock
+# check out the original at https://github.com/jackharrisonsherlock/common
 
-# Prompt symbol
-UNCOMMON_PROMPT_SYMBOL="%{$fg[green]%}$%f"
+### FINAL PROMPT
+## configure by reordering functions
+PROMPT='$(uncommon_host)$(uncommon_git_venv)$(uncommon_current_dir)$(uncommon_symbol) '
 
-# Left Prompt
-PROMPT='$(uncommon_host)$(uncommon_current_dir)$(uncommon_git_venv)$UNCOMMON_PROMPT_SYMBOL '
+### PROMPT SYMBOL
+## configure by changing variables
+uncommon_symbol() {
+    # what symbol to show for default prompt
+    local sym_unpriv="$"
+    local col_unpriv="green"
 
-# Host
+    local unpriv="%{$fg[$col_unpriv]%}$sym_unpriv%{$reset_color%}"
+
+    # what symbol to show for root/superuser prompt
+    local sym_priv="#"
+    local col_priv="red"
+
+    local priv="%{$fg[$col_priv]%}$sym_priv%{$reset_color%}"
+    # prompt symbol
+    local symbol="%(!.${priv}.${unpriv})"
+
+    echo -n "$symbol"
+}
+
+
+### HOST
+## retained from original common theme
 uncommon_host() {
   if [[ -n $SSH_CONNECTION ]]; then
     me="%n@%m"
@@ -23,59 +44,92 @@ uncommon_host() {
   fi
 }
 
-# Current directory
+### CURRENT DIRECTORY
+## configure by changing variable, commenting/uncommenting
 uncommon_current_dir() {
-    echo -n "%{$fg[cyan]%}$(shrink_path -f) %f"
+    local col_cd="cyan"
+
+    # option 1
+    # ~/john/Documents/test -> ~/j/D/test
+    # you must have oh-my-zsh and enable the plugin "shrink_path"
+    echo -n "%{$fg[$col_cd]%}$(shrink_path -f)%{$reset_color%} "
+
+    # option 2
+    # ~/john/Documents/test -> test
+    #echo -n "%{$fg[$col_cd]%}%1~$reset_color "
+
+    # option 3
+    # ~/john/Documents/test (full path)
+    #echo -n "%{$fg[$col_cd]%}%~$reset_color "
+
 }
 
-# Git status
+### GIT STATUS
+## configure by changing variables
 uncommon_git_status() {
+    ## change these
+    # symbol if there are staged AND unstaged changes
+    local sym_su=";"
+    # symbol if there are staged changes only
+    local sym_s="."
+    # symbol if there are unstaged changes only
+    local sym_u=","
+
+    ## don't change these
     local message=""
     local suffix=""
-
+    local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
     local staged=$(git status --porcelain 2>/dev/null | grep -e "^[MADRCU]")
     local unstaged=$(git status --porcelain 2>/dev/null | grep -e "^[MADRCU? ][MADRCU?]")
 
-    if [[ (-n ${staged}) && (-n ${unstaged}) ]]; then
-        suffix=";"
-    elif [[ -n ${staged} ]]; then
-    	suffix="·"
-    elif [[ -n ${unstaged} ]]; then
-    	suffix=","
+    if [[ (-n $staged) && (-n $unstaged) ]]; then
+        suffix="${sym_su}"
+    elif [[ -n $staged ]]; then
+    	suffix="${sym_s}"
+    elif [[ -n $unstaged ]]; then
+    	suffix="${sym_u}"
     fi
 
-    local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
     if [[ -n ${branch} ]]; then
-        message+="%{$fg[yellow]%}${branch}${suffix}%f"
+        message="${branch}${suffix}"
+    else
+        message=""
     fi
     echo -n "${message}"
 }
 
-# Virtualenv
-# disable prompt mangling in virtual_env/bin/activate script
+### PYTHON VIRTUALENV
+## not currently configurable
+# (this line disables built-in prompt manipulation in virtual_env/bin/activate scripts)
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 uncommon_venv() {
     local message=""
     if [[ -n ${VIRTUAL_ENV} ]]; then
         [[ ${VIRTUAL_ENV} =~ '[^\/]*$' ]]
-        message="%{$fg[yellow]%}${MATCH}%f"
+        message="${MATCH}"
     fi
     export CV="${message}"
     echo -n "${message}"
 }
 
 uncommon_git_venv() {
-    #local prefix="%{$fg[yellow]%}"
+    ## change these
+    # if we're not in a git repo or don't have a virtualenv, show this symbol
+    local sym_empty="•"
+    # what color should this part be
+    local col_gv="yellow"
+
+    ## don't change this
     local message=""
     if [[ (-n "$(uncommon_venv)") && (-n "$(uncommon_git_status)") ]]; then
-        message="$(uncommon_venv)|$(uncommon_git_status) "
+        message="[$(uncommon_venv)|$(uncommon_git_status)] "
     elif [[ -n "$(uncommon_venv)" ]]; then
-        message="$(uncommon_venv)| "
+        message="[$(uncommon_venv)|$sym_empty] "
     elif [[ -n "$(uncommon_git_status)" ]]; then
-        message="|$(uncommon_git_status) "
+        message="[$sym_empty|$(uncommon_git_status)] "
     else
         message=""
     fi
 
-    echo -n "${message}"
+    echo -n "%{$fg[$col_gv]%}${message}%f"
 }
