@@ -116,15 +116,13 @@ function gline() {
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+export FZF_DEFAULT_COMMAND="rg --files --hidden"
+
 export FZF_DEFAULT_OPTS="--preview '[[ \$(file --mime {}) = binary ]] &&
     echo {} is a binary file ||
     (pygmentize -O style=monokai -f console256 -g {} ||
     cat {}) 2> /dev/null | head -500'"
-#                 (highlight -O ansi -l {} ||
-#                  rougify {} ||
-#                  cat {}) 2> /dev/null | head -500'"
-#export FZF_CTRL_R_OPTS="--no-preview"
-#export FZF_ALT_C_OPTS="--preview 'ls {} | head -100'"
+
 $misc_exports
 
 # don't share history between panes
