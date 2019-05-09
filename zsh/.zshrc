@@ -103,6 +103,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim='nvim'
 alias gd='git diff --name-status master... | cat'
+alias s='git status'
+alias z='source venv/bin/activate'
 $aliases
 
 function gline() {
