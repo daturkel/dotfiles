@@ -126,11 +126,11 @@ uncommon_git_venv() {
     ## don't change this
     local message=""
     if [[ (-n "$(uncommon_venv)") && (-n "$(uncommon_git_status)") ]]; then
-        message="[$(uncommon_venv)|$(uncommon_git_status)] "
+        message="($(uncommon_venv)|$(uncommon_git_status)) "
     elif [[ -n "$(uncommon_venv)" ]]; then
-        message="[$(uncommon_venv)|$sym_empty] "
+        message="($(uncommon_venv)|$sym_empty) "
     elif [[ -n "$(uncommon_git_status)" ]]; then
-        message="[$sym_empty|$(uncommon_git_status)] "
+        message="($sym_empty|$(uncommon_git_status)) "
     else
         message=""
     fi

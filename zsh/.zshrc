@@ -104,7 +104,7 @@ source $ZSH/oh-my-zsh.sh
 alias vim='nvim'
 alias gd='git diff --name-status master... | cat'
 alias s='git status'
-alias z='source venv/bin/activate'
+alias v='source venv/bin/activate'
 alias cr='cd $(git rev-parse --show-toplevel)'
 $aliases
 
