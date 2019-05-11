@@ -18,7 +18,7 @@ alias web='cd ~/Documents/Web/dtm2018'
 misc_exports = ''
 py2_loc = '/Users/danturkel/anaconda3/envs/py2/bin/python'
 py3_loc = '/Users/danturkel/anaconda3/bin/python'
-py3_bin_loc = '/Users/dturkel/anaconda/bin/'
+py3_bin_loc = '/Users/dturkel/anaconda3/bin/'
 
 
 [profile.work]
