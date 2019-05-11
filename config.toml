@@ -39,6 +39,6 @@ misc_exports = '''
 eval "$(jenv init -)"
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 '''
-py2_loc = '/Users/dturkel/anaconda/envs/py2/bin/python'
-py3_loc = '/Users/dturkel/anaconda/bin/python'
-py3_bin_loc = '/Users/dturkel/anaconda/bin/'
+py2_loc = '/Users/dturkel/anaconda3/envs/py2/bin/python'
+py3_loc = '/Users/dturkel/anaconda3/bin/python'
+py3_bin_loc = '/Users/dturkel/anaconda3/bin/'
