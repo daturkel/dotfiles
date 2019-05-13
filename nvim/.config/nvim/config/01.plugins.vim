@@ -32,4 +32,6 @@ call plug#begin('~/.config/nvim_plugins')
     Plug 'junegunn/fzf.vim'
     " Testing
     Plug 'janko-m/vim-test'
+    " Vim-test uses it for picking the right compiler
+    Plug 'tpope/vim-dispatch'
 call plug#end()
