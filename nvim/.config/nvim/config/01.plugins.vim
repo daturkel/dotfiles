@@ -30,4 +30,6 @@ call plug#begin('~/.config/nvim_plugins')
     " FZF
     Plug '/usr/local/opt/fzf'
     Plug 'junegunn/fzf.vim'
+    " Testing
+    Plug 'janko-m/vim-test'
 call plug#end()
