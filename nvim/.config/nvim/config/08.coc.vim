@@ -18,6 +18,7 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " goto mappings
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gd <Plug>(coc-definition)
 
 " use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
