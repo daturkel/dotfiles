@@ -4,7 +4,7 @@ title = "config.toml"
 [settings]
 projects = ['zsh','nvim']
 files.zsh = ['.zshrc']
-files.nvim = ['.config/nvim/config/02.init.vim','.config/nvim/config/07.black.vim','.config/nvim/config/08.languageclient-neovim.vim']
+files.nvim = ['.config/nvim/config/02.init.vim','.config/nvim/config/07.black.vim','.config/nvim/config/08.languageclient-neovim.vim','.config/nvim/coc-settings.json']
 
 [profile]
 
