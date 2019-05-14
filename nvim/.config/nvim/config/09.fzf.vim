@@ -36,3 +36,13 @@ nnoremap <silent> <localleader>l :BLines<CR>
 
 " search buffers shortcut
 nnoremap <silent> <localleader>m :Buffers<CR>
+
+" search ripgrep shortcut
+command! -bang -nargs=* CRg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:33%', '?'),
+  \   <bang>0)
+nnoremap <silent> <localleader>r :CRg<CR>
+nnoremap <silent> <localleader>R :CRg!<CR>
