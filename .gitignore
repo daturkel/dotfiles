@@ -1,5 +1,9 @@
 .DS_Store
 .netrwhist
 nvim/.config/nvim/plugged/*
+nvim_work/*
+nvim_home/*
+zsh_work/*
+zsh_home/*
 test*/*
 .ropeproject/*

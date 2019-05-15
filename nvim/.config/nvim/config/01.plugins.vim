@@ -9,8 +9,6 @@ call plug#begin('~/.config/nvim_plugins')
     Plug 'mhinz/neovim-remote'
     " color schemes
     Plug 'rafi/awesome-vim-colorschemes'
-    " tab completion
-    Plug 'ervandew/supertab'
     " better sql syntax file
     Plug 'shmup/vim-sql-syntax'
     " comment current line with `gcc`; visual mode with `gc`
@@ -25,15 +23,15 @@ call plug#begin('~/.config/nvim_plugins')
     Plug 'ambv/black'
     " deletion operations don't use the yank register
     Plug 'svermeulen/vim-cutlass'
-    " language server support
-    Plug 'autozimu/LanguageClient-neovim', {
-        \ 'branch': 'next',
-        \ 'do': 'bash install.sh',
-        \ }
-    " async completion
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    " fzf search
-    Plug 'junegunn/fzf.vim'
     " TOML syntax
     Plug 'cespare/vim-toml'
+    " COC completion
+    Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+    " FZF
+    Plug '/usr/local/opt/fzf'
+    Plug 'junegunn/fzf.vim'
+    " Testing
+    Plug 'janko-m/vim-test'
+    " Vim-test uses it for picking the right compiler
+    Plug 'tpope/vim-dispatch'
 call plug#end()

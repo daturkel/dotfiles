@@ -9,7 +9,7 @@ export BROWSER="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="geoffgarside"
+ZSH_THEME="uncommon"
 
 # Change behavior of up arrow
 bindkey '^[[A' up-line-or-history
@@ -58,7 +58,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(colored-man-pages vi-mode colorize)
+plugins=(vi-mode colorize shrink-path ripgrep)
 
 # make vi mode transition faster
 export KEYTIMEOUT=1
@@ -103,6 +103,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim='nvim'
 alias gd='git diff --name-status master... | cat'
+alias s='git status'
+alias v='source venv/bin/activate'
+alias cr='cd $(git rev-parse --show-toplevel)'
 $aliases
 
 function gline() {
@@ -116,13 +119,15 @@ function gline() {
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+export FZF_DEFAULT_COMMAND="rg --files --hidden"
+
 export FZF_DEFAULT_OPTS="--preview '[[ \$(file --mime {}) = binary ]] &&
     echo {} is a binary file ||
     (pygmentize -O style=monokai -f console256 -g {} ||
     cat {}) 2> /dev/null | head -500'"
-#                 (highlight -O ansi -l {} ||
-#                  rougify {} ||
-#                  cat {}) 2> /dev/null | head -500'"
-#export FZF_CTRL_R_OPTS="--no-preview"
-#export FZF_ALT_C_OPTS="--preview 'ls {} | head -100'"
+
 $misc_exports
+
+# don't share history between panes
+unsetopt inc_append_history
+unsetopt share_history
