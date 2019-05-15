@@ -1,0 +1,6 @@
+--theme="Wombat"
+
+# add mouse scrolling in less
+--pager="less -FR"
+
+--style="numbers,changes,header"

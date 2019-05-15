@@ -123,11 +123,34 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden"
 
 export FZF_DEFAULT_OPTS="--preview '[[ \$(file --mime {}) = binary ]] &&
     echo {} is a binary file ||
-    (pygmentize -O style=monokai -f console256 -g {} ||
+    (bat --color=always {} ||
     cat {}) 2> /dev/null | head -500'"
+
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS"
+
+fzf_grep_edit(){
+    local match=$(
+      rg --color=never --line-number "" |
+        fzf --no-multi --delimiter : \
+            --preview "bat --color=always --line-range {2}: {1}"
+      )
+    local file=$(echo "$match" | cut -d':' -f1)
+    if [[ -n $file ]]; then
+        $EDITOR $file +$(echo "$match" | cut -d':' -f2)
+    fi
+}
+
+zle -N fzf_grep_edit
+
+bindkey "^o" fzf_grep_edit
 
 $misc_exports
 
 # don't share history between panes
 unsetopt inc_append_history
 unsetopt share_history
+
+# temp fix while bat is broken
+# https://github.com/sharkdp/bat/issues/509
+export BAT_PAGER="less -FR"
