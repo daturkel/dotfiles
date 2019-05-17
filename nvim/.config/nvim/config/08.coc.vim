@@ -1,9 +1,15 @@
+" be sure to install coc-snippets, coc-python, and coc-json with :CocInstall
+
 " Use tab to trigger completion with characters ahead and navigate
 inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
     \ <SID>check_back_space() ? "\<TAB>" :
     \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" Navigate snippet placeholders with tab
+let g:coc_snippet_next = "<Tab>"
+let g_coc_snippet_prev = "<S-Tab>"
 
 function! s:check_back_space() abort
     let col = col('.') - 1
