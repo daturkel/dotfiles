@@ -7,6 +7,6 @@
     "coc.source.around.disableSyntaxes": ["comment","string"],
     "coc.source.buffer.disableSyntaxes": ["comment","string"],
     "suggest.autoTrigger": "trigger",
-    "suggest.noselect": true
+    "suggest.noselect": false
 
 }
