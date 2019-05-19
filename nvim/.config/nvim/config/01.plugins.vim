@@ -5,8 +5,6 @@ endfunction
 call plug#begin('~/.config/nvim_plugins')
     " start-page for vim
     Plug 'mhinz/vim-startify'
-    " needed for some remote plugins
-    Plug 'mhinz/neovim-remote'
     " color schemes
     Plug 'rafi/awesome-vim-colorschemes'
     " better sql syntax file
@@ -36,4 +34,6 @@ call plug#begin('~/.config/nvim_plugins')
     Plug 'tpope/vim-dispatch'
     " Python automatic docstrings
     Plug 'heavenshell/vim-pydocstring'
+    " Git integration
+    Plug 'tpope/vim-fugitive'
 call plug#end()
