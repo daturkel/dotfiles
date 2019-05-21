@@ -32,8 +32,8 @@ call plug#begin('~/.config/nvim_plugins')
     Plug 'janko-m/vim-test'
     " Vim-test uses it for picking the right compiler
     Plug 'tpope/vim-dispatch'
-    " Python automatic docstrings
-    Plug 'heavenshell/vim-pydocstring'
     " Git integration
     Plug 'tpope/vim-fugitive'
+    " Indent guides
+    Plug 'nathanaelkane/vim-indent-guides'
 call plug#end()
