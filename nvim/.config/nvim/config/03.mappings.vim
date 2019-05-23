@@ -9,3 +9,5 @@ nnoremap <CR> :noh<CR>
 map Q gq
 " remaps c-u to allow undo recover from accidental c-u
 inoremap <C-U> <C-G>u<C-U>
+" we use C-I for indent guides, so let's use C-O for go to next jump
+nnoremap <C-P> <C-I>

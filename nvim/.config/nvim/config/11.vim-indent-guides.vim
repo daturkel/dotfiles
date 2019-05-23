@@ -1,1 +1,2 @@
-nnoremap <silent> <C-i> :IndentGuidesToggle<CR>
+" note this also maps tab
+nmap <silent> <C-i> <Plug>IndentGuidesToggle
