@@ -11,3 +11,8 @@ map Q gq
 inoremap <C-U> <C-G>u<C-U>
 " we use C-I for indent guides, so let's use C-O for go to next jump
 nnoremap <C-P> <C-I>
+" better split management
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
