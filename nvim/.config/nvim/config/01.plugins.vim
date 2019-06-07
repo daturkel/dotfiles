@@ -36,4 +36,7 @@ call plug#begin('~/.config/nvim_plugins')
     Plug 'tpope/vim-fugitive'
     " Indent guides
     Plug 'nathanaelkane/vim-indent-guides'
+    " Richer markdown support
+    Plug 'godlygeek/tabular'
+    Plug 'plasticboy/vim-markdown'
 call plug#end()
