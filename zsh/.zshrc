@@ -133,7 +133,8 @@ fzf_grep_edit(){
     local match=$(
       rg --color=never --line-number "" |
         fzf --no-multi --delimiter : \
-            --preview "bat --color=always --line-range {2}: {1}"
+            --preview "bat --color=always: {1}"
+            #--preview "bat --color=always --line-range {2}: {1}"
       )
     local file=$(echo "$match" | cut -d':' -f1)
     if [[ -n $file ]]; then
@@ -145,10 +146,12 @@ zle -N fzf_grep_edit
 
 bindkey "^o" fzf_grep_edit
 
-vim_nv() vim -c NV
+vim_nv() vim -c NV!
 zle -N vim_nv
 
 bindkey "^n" vim_nv
+
+export FZF_CTRL_R_OPTS='--preview-window="hidden"'
 
 $misc_exports
 
