@@ -3,5 +3,5 @@ let g:nv_search_paths = ['~/Dropbox (Personal)/Notes','./notes','./docs']
 " short file paths
 let g:nv_use_short_pathnames = 1
 " open N-FZF
-nnoremap <silent> <c-n> :NV<CR>
+nnoremap <silent> <localleader>n :NV<CR>
 
