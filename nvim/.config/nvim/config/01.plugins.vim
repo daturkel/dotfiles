@@ -39,4 +39,6 @@ call plug#begin('~/.config/nvim_plugins')
     " Richer markdown support
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'
+    " Notes
+    Plug 'alok/notational-fzf-vim'
 call plug#end()
