@@ -145,6 +145,11 @@ zle -N fzf_grep_edit
 
 bindkey "^o" fzf_grep_edit
 
+vim_nv() vim -c NV
+zle -N vim_nv
+
+bindkey "^n" vim_nv
+
 $misc_exports
 
 # don't share history between panes
