@@ -34,6 +34,7 @@ alias p='cd ~/Documents/Projects'
 alias dp='cd ~/Documents/DS_Projects'
 alias pix='ssh pixel01.s.dfw.rtrdc.net'
 alias rp='cd ~/Documents/Repos/'
+alias d='cd ~/Dropbox\\ \\(Personal\\)/Notes'
 """
 misc_exports = '''
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
