@@ -133,8 +133,7 @@ fzf_grep_edit(){
     local match=$(
       rg --color=never --line-number "" |
         fzf --no-multi --delimiter : \
-            --preview "bat --color=always: {1}"
-            #--preview "bat --color=always --line-range {2}: {1}"
+            --preview "bat --color=always --line-range {2}: {1}"
       )
     local file=$(echo "$match" | cut -d':' -f1)
     if [[ -n $file ]]; then

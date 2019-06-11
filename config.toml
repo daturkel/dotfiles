@@ -14,6 +14,7 @@ zsh_path = '/Users/danturkel/anaconda3/bin:/Library/Frameworks/GDAL.framework/Pr
 aliases="""
 alias pydir='cd ~/Documents/Code/Python'
 alias web='cd ~/Documents/Web/dtm2018'
+alias d='cd ~/Dropbox/Notes'
 """
 misc_exports = ''
 py2_loc = '/Users/danturkel/anaconda3/envs/py2/bin/python'
