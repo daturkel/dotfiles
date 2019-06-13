@@ -106,6 +106,7 @@ alias gd='git diff --name-status master... | cat'
 alias s='git status'
 alias v='source venv/bin/activate'
 alias cr='cd $(git rev-parse --show-toplevel)'
+alias d='cd ~/Notes'
 $aliases
 
 function gline() {
