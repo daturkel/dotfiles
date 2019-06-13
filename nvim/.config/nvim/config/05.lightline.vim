@@ -6,8 +6,15 @@ let g:lightline = {
     \   'left': [['mode'],
     \            ['readonly','filename','modified'],
     \            ['branch']],
-    \   'right': [['filetype'],
-    \             ['percent'],
+    \   'right': [['percent'],
+    \             ['filetype'],
+    \             ['venv']]
+    \ },
+    \ 'inactive': {
+    \   'left': [['readonly','filename','modified'],
+    \            ['branch']],
+    \   'right': [['percent'],
+    \             ['filetype'],
     \             ['venv']]
     \ },
     \ 'component_function': {
