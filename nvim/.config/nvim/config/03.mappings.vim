@@ -19,12 +19,16 @@ nnoremap <C-H> <C-W><C-H>
 
 " toggle checkboxes in markdown
 function Check()
-    let line=getline('.')
-    if line=~?'\s*-\s*\[\s*\].*'
-         s/\[\s*\]/[x]/
-    elseif line=~?'\s*-\s*\[x\].*'
-         s/\[x\]/[ ]/
+    let l:line=getline('.')
+    let l:curs=winsaveview()
+    if l:line=~?'\s*-\s*\[\s*\].*'
+        s/\[\s*\]/[.]/
+    elseif l:line=~?'\s*-\s*\[\.\].*'
+        s/\[.\]/[x]/
+    elseif l:line=~?'\s*-\s*\[x\].*'
+        s/\[x\]/[ ]/
     endif
+    call winrestview(l:curs)
 endfunction
 
-autocmd FileType markdown nnoremap - :call Check()<CR>
+autocmd FileType markdown nnoremap <silent> - :call Check()<CR>
