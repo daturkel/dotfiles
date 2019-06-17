@@ -118,9 +118,17 @@ function gline() {
     fi
 }
 
+## FZF commands
+# ctrl-t: files, but just completes filename, doesn't open
+# ctrl-e: file, but open them
+# ctrl-o: search file lines, open editor
+# ctrl-s: CD
+# ctrl-r: zsh history
+# ctrl-n: notational fzf
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export FZF_DEFAULT_COMMAND="rg --files --hidden"
+export FZF_DEFAULT_COMMAND="rg --files 2> /dev/null"
 
 export FZF_DEFAULT_OPTS="--preview '[[ \$(file --mime {}) = binary ]] &&
     echo {} is a binary file ||
@@ -143,8 +151,9 @@ fzf_grep_edit(){
 }
 
 zle -N fzf_grep_edit
-
 bindkey "^o" fzf_grep_edit
+
+bindkey "^s" fzf-cd-widget
 
 vim_nv() vim -c NV!
 zle -N vim_nv
