@@ -8,7 +8,10 @@ let maplocalleader = ","
 "" better windowing
 set hidden
 
+
 "" behavior
+" disable dangerous modeline
+set nomodeline
 " scroll padding 5 lines
 set so=5
 " scroll to next row for wrapped lines
