@@ -22,11 +22,11 @@ function Check()
     let l:line=getline('.')
     let l:curs=winsaveview()
     if l:line=~?'\s*-\s*\[\s*\].*'
-        s/\[\s*\]/[.]/
+        keepjumps s/\[\s*\]/[.]/
     elseif l:line=~?'\s*-\s*\[\.\].*'
-        s/\[.\]/[x]/
+        keepjumps s/\[.\]/[x]/
     elseif l:line=~?'\s*-\s*\[x\].*'
-        s/\[x\]/[ ]/
+        keepjumps s/\[x\]/[ ]/
     endif
     call winrestview(l:curs)
 endfunction
