@@ -107,6 +107,7 @@ alias s='git status'
 alias v='source venv/bin/activate'
 alias cr='cd $(git rev-parse --show-toplevel)'
 alias d='cd ~/Notes'
+alias g='cd ~/Dropbox\ \(Personal\)/Grad\ School'
 $aliases
 
 function gline() {
@@ -161,6 +162,12 @@ zle -N vim_nv
 bindkey "^n" vim_nv
 
 export FZF_CTRL_R_OPTS='--preview-window="hidden"'
+
+ts(){
+    vim $(awk 'FNR==3 {print FILENAME, "|", $0}' ~/Notes/*.md |
+        fzf -d '\|' --preview='bat {1}' |
+        awk '{print $1;}')
+}
 
 $misc_exports
 
