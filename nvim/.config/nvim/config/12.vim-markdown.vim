@@ -12,3 +12,5 @@ let g:vim_markdown_frontmatter = 1
 autocmd Filetype markdown nnoremap <silent> <localleader>j :Toch<cr>
 " select from TOC and quit
 autocmd FileType qf nnoremap <Space> <cr>:only<cr>
+" finnicky comment syntax thing
+autocmd Filetype markdown setlocal formatoptions+=o
