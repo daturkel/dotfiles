@@ -121,7 +121,6 @@ function gline() {
 
 ## FZF commands
 # ctrl-t: files, but just completes filename, doesn't open
-# ctrl-e: file, but open them
 # ctrl-o: search file lines, open editor
 # ctrl-s: CD
 # ctrl-r: zsh history

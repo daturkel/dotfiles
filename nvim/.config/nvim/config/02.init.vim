@@ -43,8 +43,6 @@ set history=700
 set ignorecase
 " but do be case sensitive once an upper case letter is used
 set smartcase
-" don't automatically assume line after comment is also a comment
-au FileType * setlocal formatoptions-=cro
 " return to last edit position when opening files
 autocmd BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |

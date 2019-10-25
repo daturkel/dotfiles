@@ -1,5 +1,14 @@
 "" vimtex
-let g:vimtex_view_method='skim'
 let g:vimtex_compiler_progname='nvr'
-let g:vimtex_view_skim_activate=1
-let g:matchup_matchparen_deferred = 1
+let g:vimtex_view_method = 'skim'
+let g:vimtex_matchparen_enabled = 0
+let g:vimtex_compiler_latexmk = {
+    \ 'options' : [
+    \   '-pdf',
+    \   '-shell-escape',
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}

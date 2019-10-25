@@ -17,6 +17,7 @@ call plug#begin('~/.config/nvim_plugins')
     Plug 'itchyny/lightline.vim'
     " latex-related stuff
     Plug 'lervag/vimtex'
+    Plug 'mhinz/neovim-remote' "also needed for tex
     " python syntax linter
     Plug 'ambv/black'
     " deletion operations don't use the yank register
@@ -38,7 +39,7 @@ call plug#begin('~/.config/nvim_plugins')
     Plug 'nathanaelkane/vim-indent-guides'
     " Richer markdown support
     Plug 'godlygeek/tabular'
-    Plug 'plasticboy/vim-markdown'
+    Plug 'daturkel/vim-markdown'
     " Notes
     Plug 'alok/notational-fzf-vim'
 call plug#end()
