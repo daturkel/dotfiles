@@ -42,4 +42,10 @@ call plug#begin('~/.config/nvim_plugins')
     Plug 'daturkel/vim-markdown'
     " Notes
     Plug 'alok/notational-fzf-vim'
+    " Better objects for brackets, tags, quotes
+    Plug 'tpope/vim-surround'
+    " Smart quotes
+    Plug 'reedes/vim-textobj-quote'
+    " dependency for above
+    Plug 'kana/vim-textobj-user'
 call plug#end()
