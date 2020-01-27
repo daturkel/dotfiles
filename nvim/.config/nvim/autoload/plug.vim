@@ -401,18 +401,16 @@ if s:is_win
 
   " Copied from fzf
   function! s:wrap_cmds(cmds)
-    let cmds = [
+    return map([
       \ '@echo off',
       \ 'setlocal enabledelayedexpansion']
+    \ + (use_chcp ? [
+      \ 'for /f "usebackq" %%a in (`chcp ^| sed "s/[^0-9]//gp"`) do set origchcp=%%a',
+      \ 'chcp 65001 > nul'] : [])
     \ + (type(a:cmds) == type([]) ? a:cmds : [a:cmds])
-    \ + ['endlocal']
-    if has('iconv')
-      if !exists('s:codepage')
-        let s:codepage = libcallnr('kernel32.dll', 'GetACP', 0)
-      endif
-      return map(cmds, printf('iconv(v:val."\r", "%s", "cp%d")', &encoding, s:codepage))
-    endif
-    return map(cmds, 'v:val."\r"')
+    \ + (use_chcp ? ['chcp !origchcp! > nul'] : [])
+    \ + ['endlocal'],
+    \ 'v:val."\r"')
   endfunction
 
   function! s:batchfile(cmd)

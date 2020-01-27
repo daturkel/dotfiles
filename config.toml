@@ -27,7 +27,6 @@ zsh_path = '/usr/local/clang6/bin:$HOME/.jenv/bin:$HOME/anaconda/bin:/usr/local/
 aliases = """
 alias gxs='cd ~/Documents/Repos/xfl-scripts/'
 alias ddl='cd ~/Documents/Repos/xfl-scripts/ddl'
-alias ts='cd ~/Documents/Repos/xfl-scripts/task-scripts/'
 alias dsu='source activate ds-sandbox'
 alias p='cd ~/Documents/Projects'
 alias dp='cd ~/Documents/DS_Projects'
