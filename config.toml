@@ -10,7 +10,7 @@ files.nvim = ['.config/nvim/config/02.init.vim','.config/nvim/config/07.black.vi
 
 [profile.home]
 home_dir = '/Users/danturkel/'
-zsh_path = '/Users/danturkel/anaconda3/bin:/Library/Frameworks/GDAL.framework/Programs:/usr/local/bin:/Users/danturkel/.rvm/gems/ruby-2.1.1/bin:/Users/danturkel/.rvm/gems/ruby-2.1.1@global/bin:/Users/danturkel/.rvm/rubies/ruby-2.1.1/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/MacGPG2/bin:/Library/TeX/texbin:/Applications/sage:/usr/local/sbin:/usr/local/drush:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:/usr/X11/bin:/Users/danturkel/.rvm/gems/ruby-2.0.0-p247/bin:/usr/texbin:/sw/bin:/Users/danturkel/.rvm/bin:/usr/local/opt/fzf/bin'
+zsh_path = '/Users/danturkel/anaconda3/bin:/Library/Frameworks/GDAL.framework/Programs:/usr/local/bin:/Users/danturkel/.rvm/gems/ruby-2.1.1/bin:/Users/danturkel/.rvm/gems/ruby-2.1.1@global/bin:/Users/danturkel/.rvm/rubies/ruby-2.1.1/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/MacGPG2/bin:/Library/TeX/texbin:/Applications/sage:/usr/local/sbin:/usr/local/drush:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:/usr/X11/bin:/Users/danturkel/.rvm/gems/ruby-2.0.0-p247/bin:/usr/texbin:/sw/bin:/Users/danturkel/.rvm/bin:/usr/local/opt/fzf/bin:/Users/danturkel/.poetry/bin'
 aliases="""
 alias pydir='cd ~/Documents/Code/Python'
 alias web='cd ~/Documents/Web/dtm2018'
