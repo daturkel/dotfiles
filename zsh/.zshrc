@@ -177,3 +177,7 @@ unsetopt share_history
 # temp fix while bat is broken
 # https://github.com/sharkdp/bat/issues/509
 export BAT_PAGER="less -FR"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
