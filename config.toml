@@ -39,5 +39,5 @@ eval "$(jenv init -)"
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 '''
 py2_loc = '/Users/dturkel/.pyenv/versions/2.7.17'
-py3_loc = '/Users/dturkel/.pyenv/versions/relevance_engine/bin/python'
+py3_loc = '/Users/dturkel/.pyenv/versions/3.6.6/bin/python'
 py3_bin_loc = '/Users/dturkel/.pyenv/versions/relevance_engine/bin'
