@@ -3,7 +3,7 @@ export ZSH=${home_dir}.oh-my-zsh
 
 export EDITOR="/usr/local/bin/nvim"
 
-export BROWSER="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+export BROWSER="/Applications/Google\ Chrome.app"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -58,7 +58,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(vi-mode colorize shrink-path ripgrep poetry)
+plugins=(vi-mode colorize shrink-path ripgrep)
 
 # make vi mode transition faster
 export KEYTIMEOUT=1
