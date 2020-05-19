@@ -19,7 +19,7 @@ call plug#begin('~/.config/nvim_plugins')
     Plug 'lervag/vimtex'
     Plug 'mhinz/neovim-remote' "also needed for tex
     " python syntax linter
-    Plug 'ambv/black'
+    Plug 'psf/black', { 'branch': 'stable' }
     " deletion operations don't use the yank register
     Plug 'svermeulen/vim-cutlass'
     " TOML syntax
