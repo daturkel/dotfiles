@@ -25,7 +25,7 @@ call plug#begin('~/.config/nvim_plugins')
     " TOML syntax
     Plug 'cespare/vim-toml'
     " COC completion
-    Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " FZF
     Plug '/usr/local/opt/fzf'
     Plug 'junegunn/fzf.vim'
