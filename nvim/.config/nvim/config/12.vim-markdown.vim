@@ -2,8 +2,6 @@
 let g:vim_markdown_folding_disabled = 1
 " shrink toc if possible
 let g:vim_markdown_toc_autofit = 1
-" fancy syntax concealment
-autocmd FileType markdown set conceallevel=2
 " but not for code blocks
 let g:vim_markdown_conceal_code_blocks = 0
 " yaml frontmatter

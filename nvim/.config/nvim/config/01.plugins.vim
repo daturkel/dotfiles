@@ -39,7 +39,7 @@ call plug#begin('~/.config/nvim_plugins')
     Plug 'nathanaelkane/vim-indent-guides'
     " Richer markdown support
     Plug 'godlygeek/tabular'
-    Plug 'daturkel/vim-markdown'
+    Plug 'plasticboy/vim-markdown'
     " Notes
     Plug 'alok/notational-fzf-vim'
     " Better objects for brackets, tags, quotes
