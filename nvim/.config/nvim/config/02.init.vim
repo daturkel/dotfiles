@@ -85,3 +85,9 @@ autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
 " no spellcheck in terminal please!
 au TermOpen * setlocal nospell
+" Better netrw settings
+"" Tree mode
+let g:netrw_liststyle=3
+"" hide the banner
+let g:netrw_banner = 0
+
