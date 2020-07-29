@@ -86,9 +86,14 @@ autocmd BufLeave term://* stopinsert
 " no spellcheck in terminal please!
 au TermOpen * setlocal nospell
 
-" create a directory on safe if it doesn't exist already
+" create a directory on save if it doesn't exist already
 " https://vi.stackexchange.com/questions/678/how-do-i-save-a-file-in-a-directory-that-does-not-yet-exist
 augroup Mkdir
   autocmd!
   autocmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
 augroup END
+" Better netrw settings
+"" Tree mode
+let g:netrw_liststyle=3
+"" hide the banner
+let g:netrw_banner = 0

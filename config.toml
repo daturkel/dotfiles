@@ -24,7 +24,7 @@ py3_bin_loc = '/Users/danturkel/.pyenv/versions/3.8.1/bin'
 
 [profile.work]
 home_dir = '/Users/dturkel/'
-zsh_path = '/usr/local/clang6/bin:$HOME/.jenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/git/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/drush:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:/usr/X11/bin:/usr/texbin:/sw/bin:$HOME/.rvm/bin:$HOME/bin:/usr/local/texlive/2019/bin/x86_64-darwin'
+zsh_path = '/usr/local/clang6/bin:$HOME/.jenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/git/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/drush:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:/usr/X11/bin:/usr/texbin:/sw/bin:$HOME/.rvm/bin:$HOME/bin:/usr/local/texlive/2019/bin/x86_64-darwin:$HOME/.poetry/bin:/Users/dturkel/.cargo/bin'
 aliases = """
 alias gxs='cd ~/Documents/Repos/xfl-scripts/'
 alias ddl='cd ~/Documents/Repos/xfl-scripts/ddl'
