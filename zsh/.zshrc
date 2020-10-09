@@ -73,6 +73,7 @@ bindkey -M viins "$terminfo[kcud1]" history-beginning-search-forward
 # User configuration
 
 export PATH=$zsh_path
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
