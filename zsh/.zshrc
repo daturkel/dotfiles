@@ -1,3 +1,8 @@
+# Homebrew completions
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH=${home_dir}.oh-my-zsh
 
@@ -77,6 +82,12 @@ export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+
+if type brew &>/dev/null; then
+  autoload -Uz compinit
+  compinit
+  # See: https://stackoverflow.com/a/19601821/4378637
+fi
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
