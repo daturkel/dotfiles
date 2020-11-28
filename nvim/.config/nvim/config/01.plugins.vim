@@ -29,12 +29,6 @@ call plug#begin('~/.config/nvim_plugins')
     " FZF
     Plug '/usr/local/opt/fzf'
     Plug 'junegunn/fzf.vim'
-    " Testing
-    Plug 'janko-m/vim-test'
-    " Vim-test uses it for picking the right compiler
-    Plug 'tpope/vim-dispatch'
-    " Git integration
-    Plug 'tpope/vim-fugitive'
     " Indent guides
     Plug 'nathanaelkane/vim-indent-guides'
     " Richer markdown support
@@ -44,4 +38,9 @@ call plug#begin('~/.config/nvim_plugins')
     Plug 'alok/notational-fzf-vim'
     " Better objects for brackets, tags, quotes
     Plug 'tpope/vim-surround'
+    " Git
+    Plug 'tpope/vim-fugitive'
+    " Wiki
+    Plug 'lervag/wiki.vim'
+
 call plug#end()
