@@ -70,7 +70,8 @@ set cursorline
 " set colorscheme
 syntax enable
 set termguicolors
-colorscheme wombat256mod
+colorscheme vem-dark
+let g:vem_colors_italic = 1
 " show matching brackets
 set showmatch
 

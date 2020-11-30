@@ -5,8 +5,6 @@ endfunction
 call plug#begin('~/.config/nvim_plugins')
     " start-page for vim
     Plug 'mhinz/vim-startify'
-    " color schemes
-    Plug 'rafi/awesome-vim-colorschemes'
     " better sql syntax file
     Plug 'shmup/vim-sql-syntax'
     " comment current line with `gcc`; visual mode with `gc`
@@ -42,5 +40,8 @@ call plug#begin('~/.config/nvim_plugins')
     Plug 'tpope/vim-fugitive'
     " Wiki
     Plug 'lervag/wiki.vim'
-
+    " vem dark theme
+    Plug 'pacha/vem-dark'
+    " Documentation generator
+    Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 call plug#end()
