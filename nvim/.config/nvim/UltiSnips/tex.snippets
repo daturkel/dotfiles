@@ -1,0 +1,56 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet enum "enumerate env" b
+\begin{enumerate}
+	\item $0
+\end{enumerate}
+endsnippet
+
+snippet begin "environment" b
+\begin{${1:env}}
+	${0:${VISUAL}}
+\end{$1}
+endsnippet
+
+snippet dm "display math" w
+\[
+	$0	
+\]
+endsnippet
+
+snippet align "align" w
+\begin{align*}
+	$0
+\end{align*}
+endsnippet
+
+snippet np "new page" w
+
+\newpage
+
+$0
+endsnippet
