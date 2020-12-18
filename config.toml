@@ -28,7 +28,6 @@ alias pix='ssh pixel01.s.dfw.rtrdc.net'
 alias rp='cd ~/Documents/Repos/'
 """
 misc_exports = '''
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 eval "$(jenv init -)"
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 '''
