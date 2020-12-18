@@ -12,8 +12,6 @@ files.nvim = ['.config/nvim/config/02.init.vim','.config/nvim/config/07.black.vi
 home_dir = '/Users/danturkel/'
 zsh_path = '/Library/Frameworks/GDAL.framework/Programs:/usr/local/bin:/Users/danturkel/.rvm/gems/ruby-2.1.1/bin:/Users/danturkel/.rvm/gems/ruby-2.1.1@global/bin:/Users/danturkel/.rvm/rubies/ruby-2.1.1/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/MacGPG2/bin:/Library/TeX/texbin:/Applications/sage:/usr/local/sbin:/usr/local/drush:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:/usr/X11/bin:/Users/danturkel/.rvm/gems/ruby-2.0.0-p247/bin:/usr/texbin:/sw/bin:/Users/danturkel/.rvm/bin:/usr/local/opt/fzf/bin:/Users/danturkel/.cargo/bin:/Users/danturkel/.poetry/bin:/usr/local/go/bin'
 aliases="""
-alias pydir='cd ~/Documents/Code/Python'
-alias web='cd ~/Documents/Web/dtm2018'
 alias sn='the-way'
 """
 misc_exports = ''
@@ -26,11 +24,6 @@ py3_bin_loc = '/Users/danturkel/.pyenv/versions/3.8.1/bin'
 home_dir = '/Users/dturkel/'
 zsh_path = '/usr/local/clang6/bin:$HOME/.jenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/git/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/drush:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:/usr/X11/bin:/usr/texbin:/sw/bin:$HOME/.rvm/bin:$HOME/bin:/usr/local/texlive/2019/bin/x86_64-darwin:$HOME/.poetry/bin:/Users/dturkel/.cargo/bin'
 aliases = """
-alias gxs='cd ~/Documents/Repos/xfl-scripts/'
-alias ddl='cd ~/Documents/Repos/xfl-scripts/ddl'
-alias dsu='source activate ds-sandbox'
-alias p='cd ~/Documents/Projects'
-alias dp='cd ~/Documents/DS_Projects'
 alias pix='ssh pixel01.s.dfw.rtrdc.net'
 alias rp='cd ~/Documents/Repos/'
 """

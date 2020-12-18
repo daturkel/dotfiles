@@ -1,5 +1,5 @@
 " search paths
-let g:nv_search_paths = ['~/Notes']
+let g:nv_search_paths = ['~/Documents/wiki']
 " short file paths
 let g:nv_use_short_pathnames = 1
 " open N-FZF

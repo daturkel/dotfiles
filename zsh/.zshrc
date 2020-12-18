@@ -119,7 +119,7 @@ alias s='git status'
 alias v='source venv/bin/activate'
 alias cr='cd $(git rev-parse --show-toplevel)'
 alias d='cd ~/Notes'
-alias g='cd ~/Dropbox\ \(Personal\)/Grad\ School'
+alias wk='cd ~/Documents/wiki'
 $aliases
 
 function gline() {
@@ -185,10 +185,6 @@ $misc_exports
 # don't share history between panes
 unsetopt inc_append_history
 unsetopt share_history
-
-# temp fix while bat is broken
-# https://github.com/sharkdp/bat/issues/509
-export BAT_PAGER="less -FR"
 
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"

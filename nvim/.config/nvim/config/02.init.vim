@@ -87,6 +87,8 @@ autocmd BufLeave term://* stopinsert
 " no spellcheck in terminal please!
 au TermOpen * setlocal nospell
 
+set conceallevel=2
+
 " create a directory on save if it doesn't exist already
 " https://vi.stackexchange.com/questions/678/how-do-i-save-a-file-in-a-directory-that-does-not-yet-exist
 augroup Mkdir
