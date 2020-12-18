@@ -83,11 +83,11 @@ export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 
 source $ZSH/oh-my-zsh.sh
 
-if type brew &>/dev/null; then
-  autoload -Uz compinit
-  compinit
-  # See: https://stackoverflow.com/a/19601821/4378637
-fi
+# if type brew &>/dev/null; then
+#   autoload -Uz compinit
+#   compinit
+#   # See: https://stackoverflow.com/a/19601821/4378637
+# fi
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
