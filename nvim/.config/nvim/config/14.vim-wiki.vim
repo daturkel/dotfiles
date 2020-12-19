@@ -11,5 +11,3 @@ let g:wiki_link_target_type = 'md'
 let g:wiki_link_extension = '.md'
 
 let g:wiki_write_on_nav = 1
-
-nmap <localleader>w <Plug>(wiki-fzf-pages)
