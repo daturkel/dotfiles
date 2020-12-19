@@ -32,7 +32,7 @@ nnoremap <silent> <localleader>P :WikiPages!<CR>
 command! -bang -nargs=* WikiLines
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \  fzf#vim#with_preview({'options': ['--prompt','WikiLines> ']},'up:60%','ctrl-/'),
+  \  fzf#vim#with_preview({'dir':'~/Documents/wiki/', 'options': ['--prompt','WikiLines> ']},'up:60%','ctrl-/'),
   \   <bang>0)
 nnoremap <silent> <localleader>w :WikiLines<CR>
 nnoremap <silent> <localleader>W :WikiLines!<CR>
