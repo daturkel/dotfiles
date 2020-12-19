@@ -136,7 +136,7 @@ function gline() {
 # ctrl-o: search file lines, open editor
 # ctrl-s: CD
 # ctrl-r: zsh history
-# ctrl-n: notational fzf
+# ctrl-w: wiki
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -167,10 +167,10 @@ bindkey "^o" fzf_grep_edit
 
 bindkey "^s" fzf-cd-widget
 
-vim_nv() vim -c NV!
-zle -N vim_nv
+wl() vim -c WikiLines!
+zle -N wl
 
-bindkey "^n" vim_nv
+bindkey "^w" wl
 
 export FZF_CTRL_R_OPTS='--preview-window="hidden"'
 
