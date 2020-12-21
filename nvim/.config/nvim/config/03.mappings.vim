@@ -51,3 +51,6 @@ function! WinMove(key)
     exec "wincmd ".a:key
   endif
 endfunction
+
+nmap <silent> <c-d> i<C-R>=strftime("%d %b %Y (%a)")<CR><Esc>
+imap <silent> <c-d> <C-R>=strftime("%d %b %Y (%a)")<CR>
