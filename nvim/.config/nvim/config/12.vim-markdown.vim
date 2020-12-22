@@ -10,3 +10,5 @@ let g:vim_markdown_frontmatter = 1
 autocmd Filetype markdown nnoremap <silent> <localleader>j :Toch<cr>
 " select from TOC and quit
 autocmd FileType qf nnoremap <Space> <cr>:only<cr>
+" don't add indent to new list items
+let g:vim_markdown_new_list_item_indent = 0

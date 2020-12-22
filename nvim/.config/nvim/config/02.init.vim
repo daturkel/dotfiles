@@ -27,10 +27,13 @@ set expandtab
 set tabstop=4
 " but html and css should be two spaces
 autocmd Filetype html setlocal ts=2 sw=2 sts=2
+autocmd Filetype markdown setlocal ts=2 sw=2 sts=2
 autocmd Filetype css setlocal ts=2 sw=2 sts=2
 autocmd Filetype scss setlocal ts=2 sw=2 sts=2
 autocmd Filetype htmldjango setlocal ts=2 sw=2 sts=2
 autocmd Filetype jinja setlocal ts=2 sw=2 sts=2
+" pressing o continues bulleted list in markdown
+autocmd Filetype markdown setlocal formatoptions+=o
 " pressing tab in insert mode is 4 spaces
 set softtabstop=4
 " autoread outside changes
@@ -87,7 +90,7 @@ autocmd BufLeave term://* stopinsert
 " no spellcheck in terminal please!
 au TermOpen * setlocal nospell
 
-set conceallevel=2
+set conceallevel=0
 
 " create a directory on save if it doesn't exist already
 " https://vi.stackexchange.com/questions/678/how-do-i-save-a-file-in-a-directory-that-does-not-yet-exist
