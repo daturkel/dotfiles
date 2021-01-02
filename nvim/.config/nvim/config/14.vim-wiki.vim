@@ -7,8 +7,9 @@ let g:wiki_map_create_page = 'Create'
 function Create(text) abort
   let lowered = tolower(a:text)
   let no_spaces = substitute(lowered, '\s\+', '-', 'g')
-  let no_apostrophes = substitute(no_spaces, "[!?\\']", '', 'g')
-  return no_apostrophes
+  let no_symbols = substitute(no_spaces, "[!?\\']", '', 'g')
+  let no_quotes = substitute(no_symbols, '"', '', 'g')
+  return no_quotes
 endfunction
 
 let g:wiki_link_target_type = 'md'
