@@ -5,7 +5,10 @@ let g:wiki_filetypes = ['md']
 let g:wiki_map_link_create = 'Create'
 let g:wiki_map_create_page = 'Create'
 function Create(text) abort
-  return substitute(tolower(a:text), '\s\+', '-', 'g')
+  let lowered = tolower(a:text)
+  let no_spaces = substitute(lowered, '\s\+', '-', 'g')
+  let no_apostrophes = substitute(no_spaces, "[!?\\']", '', 'g')
+  return no_apostrophes
 endfunction
 
 let g:wiki_link_target_type = 'md'
