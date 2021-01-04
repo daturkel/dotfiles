@@ -33,7 +33,7 @@ endfunction
 
 autocmd FileType markdown nnoremap <silent> - :call Check()<CR>
 
-"move to the split in the direction shown, or create a new split
+" move to the split in the direction shown, or create a new split
 nnoremap <silent> <C-h> :call WinMove('h')<cr>
 nnoremap <silent> <C-j> :call WinMove('j')<cr>
 nnoremap <silent> <C-k> :call WinMove('k')<cr>
@@ -52,5 +52,9 @@ function! WinMove(key)
   endif
 endfunction
 
+" insert date
 nmap <silent> <c-d> i<C-R>=strftime("%d %b %Y (%a)")<CR><Esc>
 imap <silent> <c-d> <C-R>=strftime("%d %b %Y (%a)")<CR>
+
+" open current file in typora
+nmap <silent> <localleader>t :w<CR>:exe 'silent !open -a typora %'<CR>
