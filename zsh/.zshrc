@@ -119,7 +119,8 @@ alias s='git status'
 alias v='source venv/bin/activate'
 alias cr='cd $(git rev-parse --show-toplevel)'
 alias d='cd ~/Notes'
-alias wk='cd ~/Documents/wiki'
+alias w='cd ~/Documents/wiki'
+alias g='cd ~/Dropbox\ \(Personal\)/Grad\ School'
 $aliases
 
 function gline() {
