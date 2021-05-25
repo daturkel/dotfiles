@@ -1,4 +1,4 @@
-" be sure to install coc-snippets, coc-python, and coc-json with :CocInstall
+" be sure to install coc-snippets, coc-pyright, coc-go, and coc-json with :CocInstall
 
 " Use tab to trigger completion with characters ahead and navigate
 " inoremap <silent><expr> <TAB>
@@ -39,9 +39,11 @@ nmap <silent> gd <Plug>(coc-definition)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-    if &filetype == 'vim'
-        execute 'h '.expand('<cword>')
-    else
-        call CocActionAsync('doHover')
-    endif
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
 endfunction
