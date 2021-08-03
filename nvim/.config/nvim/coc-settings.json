@@ -7,5 +7,11 @@
     "suggest.noselect": false,
     "python.analysis.typeCheckingMode": "off",
     "pyright.disableDiagnostics": true,
-    "go.disable": {"diagnostics": true}
+    "languageserver": {
+        "golang": {
+            "command": "gopls",
+            "rootPatterns": ["go.mod", ".vim/", ".git/"],
+            "filetypes": ["go"]
+        }
+    }
 }

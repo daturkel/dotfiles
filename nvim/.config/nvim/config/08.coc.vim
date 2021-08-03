@@ -32,8 +32,10 @@ inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " goto mappings
-nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -47,3 +49,15 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
+
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')

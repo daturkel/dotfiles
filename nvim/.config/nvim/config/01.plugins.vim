@@ -42,4 +42,6 @@ call plug#begin('~/.config/nvim_plugins')
     Plug 'pacha/vem-dark'
     " Documentation generator
     Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+    " Go
+    Plug 'fatih/vim-go'
 call plug#end()
