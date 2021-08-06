@@ -104,6 +104,6 @@ let g:netrw_liststyle=3
 "" hide the banner
 let g:netrw_banner = 0
 " faster updatetime for cursorhold
-set updatetime=300
+set updatetime=150
 " don't show completion menu messages
 set shortmess+=c

@@ -1,13 +1,5 @@
 " be sure to install coc-snippets, coc-pyright, coc-go, and coc-json with :CocInstall
 
-" Use tab to trigger completion with characters ahead and navigate
-" inoremap <silent><expr> <TAB>
-"     \ pumvisible() ? "\<C-n>" :
-"     \ <SID>check_back_space() ? "\<TAB>" :
-"     \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       "\ pumvisible() ? coc#_select_confirm() :
