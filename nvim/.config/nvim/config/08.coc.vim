@@ -53,3 +53,5 @@ nmap <silent> ]c <Plug>(coc-diagnostic-next)
 nmap <leader>rn <Plug>(coc-rename)
 
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+
+let g:coc_global_extensions = ['coc-json', 'coc-pairs', 'coc-snippets', 'coc-pyright']
