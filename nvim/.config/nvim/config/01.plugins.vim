@@ -5,8 +5,6 @@ endfunction
 call plug#begin('~/.config/nvim_plugins')
     " start-page for vim
     Plug 'mhinz/vim-startify'
-    " better sql syntax file
-    Plug 'shmup/vim-sql-syntax'
     " comment current line with `gcc`; visual mode with `gc`
     Plug 'tpope/vim-commentary' 
     " better `.` for repeating last commend
