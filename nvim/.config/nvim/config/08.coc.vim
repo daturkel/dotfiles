@@ -21,7 +21,7 @@ endfunction
 inoremap <silent><expr> <c-space> coc#refresh()
 
 " use enter to confirm completion
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " goto mappings
 nmap <silent> gd <Plug>(coc-definition)
