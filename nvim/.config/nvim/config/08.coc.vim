@@ -55,3 +55,6 @@ nmap <leader>rn <Plug>(coc-rename)
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
 let g:coc_global_extensions = ['coc-json', 'coc-pairs', 'coc-snippets', 'coc-pyright']
+
+" No coc suggestions for plaintext/markdown
+autocmd FileType markdown,text let b:coc_suggest_disable = 1
