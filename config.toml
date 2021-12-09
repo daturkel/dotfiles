@@ -22,7 +22,7 @@ py3_bin_loc = '/Users/danturkel/.pyenv/versions/3.8.1/bin'
 
 [profile.hinge]
 home_dir = '/Users/danturkel/'
-zsh_path = '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/danturkel/go/bin:/Library/TeX/texbin'
+zsh_path = '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/TeX/texbin'
 aliases = """
 source ~/.zshrc-extra
 alias rp='cd ~/Repos/'
