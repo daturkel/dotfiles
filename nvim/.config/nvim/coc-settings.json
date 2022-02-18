@@ -6,7 +6,7 @@
     "python.linting.enabled": false,
     "coc.source.around.disableSyntaxes": ["comment","string"],
     "coc.source.buffer.disableSyntaxes": ["comment","string"],
-    "suggest.autoTrigger": "always",
+    "suggest.autoTrigger": "none",
     "suggest.minTriggerInputLength": 3,
     "suggest.noselect": false,
     "python.analysis.typeCheckingMode": "off",
@@ -15,7 +15,9 @@
         "golang": {
             "command": "gopls",
             "rootPatterns": ["go.mod", ".vim/", ".git/"],
-            "filetypes": ["go"]
+            "filetypes": ["go"],
+            "initializationOptions": 
+                {"usePlaceholders": true}
         }
     }
 }
