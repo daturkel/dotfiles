@@ -1,4 +1,5 @@
 {
+    "pairs.enableCharacters":["(", "[", "{", "'", "\"", "`"],
     "diagnostic.errorSign": "X",
     "diagnostic.warningSign": "!",
     "diagnostic.infoSign": "I",
