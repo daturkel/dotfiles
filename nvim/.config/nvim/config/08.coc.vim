@@ -1,4 +1,5 @@
-" be sure to install coc-snippets, coc-pyright, coc-go, and coc-json with :CocInstall
+" be sure to install coc-snippets, coc-pyright, coc-pairs, and coc-json with
+" CocInstall
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
