@@ -105,16 +105,9 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim='nvim'
-alias gd='git diff --name-status master... | cat'
-alias s='git status'
-alias v='source venv/bin/activate'
 alias cr='cd $(git rev-parse --show-toplevel)'
-alias d='cd ~/Notes'
-alias w='cd ~/Documents/wiki'
-alias g='cd ~/Dropbox\ \(Personal\)/Grad\ School'
+alias sn='cd ~/snippets'
 $aliases
 
 function gline() {
