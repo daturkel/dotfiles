@@ -55,7 +55,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(colorize shrink-path ripgrep)
+plugins=(colorize shrink-path ripgrep docker)
 
 # make vi mode transition faster
 export KEYTIMEOUT=1

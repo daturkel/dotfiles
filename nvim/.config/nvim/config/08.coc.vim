@@ -1,4 +1,4 @@
-" be sure to install coc-snippets, coc-pyright, coc-pairs, and coc-json with
+" be sure to install coc-snippets, coc-pyright, coc-pairs, coc-json, coc-yaml with
 " CocInstall
 
 inoremap <silent><expr> <TAB>
@@ -55,7 +55,7 @@ nmap <leader>rn <Plug>(coc-rename)
 
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
-let g:coc_global_extensions = ['coc-json', 'coc-snippets', 'coc-pyright']
+let g:coc_global_extensions = ['coc-json', 'coc-snippets', 'coc-pyright', 'coc-pairs', 'coc-yaml']
 
 " No coc suggestions for plaintext/markdown
 autocmd FileType markdown,text let b:coc_suggest_disable = 1
