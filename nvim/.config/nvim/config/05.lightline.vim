@@ -26,7 +26,7 @@ let g:lightline = {
 set noshowmode
 
 function! Branch()
-    let branch = fugitive#head()
+    let branch = FugitiveHead()
     if branch != '' && &ft != 'startify'
         let response = branch
     else

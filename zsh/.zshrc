@@ -51,7 +51,7 @@ bindkey '^[[A' up-line-or-history
 bindkey '^[[B' down-line-or-history
 # Other useful env vars
 export EDITOR="/usr/local/bin/nvim"
-export BROWSER="/Applications/Google\ Chrome.app"
+#export BROWSER="/Applications/Google\ Chrome.app"
 export PATH=$zsh_path
 export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:~/go/bin
@@ -127,3 +127,4 @@ export GOPATH=$HOME/go
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
