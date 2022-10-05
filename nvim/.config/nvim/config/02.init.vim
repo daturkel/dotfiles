@@ -8,6 +8,8 @@ let maplocalleader = ","
 "" better windowing
 set hidden
 
+"" no command bar
+set cmdheight=0
 
 "" behavior
 " disable dangerous modeline
