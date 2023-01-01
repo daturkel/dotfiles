@@ -12,6 +12,7 @@
     "suggest.noselect": false,
     "python.analysis.typeCheckingMode": "off",
     "pyright.disableDiagnostics": true,
+    "inlayHint.enable": false,
     "languageserver": {
         "golang": {
             "command": "gopls",
