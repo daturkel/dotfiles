@@ -13,7 +13,6 @@ call plug#begin('~/.config/nvim_plugins')
     Plug 'itchyny/lightline.vim'
     " latex-related stuff
     Plug 'lervag/vimtex'
-    Plug 'mhinz/neovim-remote' "also needed for tex
     " python syntax linter
     Plug 'psf/black', { 'branch': 'stable' }
     " deletion operations don't use the yank register
@@ -30,8 +29,6 @@ call plug#begin('~/.config/nvim_plugins')
     " Richer markdown support
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'
-    " Better objects for brackets, tags, quotes
-    Plug 'tpope/vim-surround'
     " Git
     Plug 'tpope/vim-fugitive'
     " Wiki
@@ -39,7 +36,5 @@ call plug#begin('~/.config/nvim_plugins')
     " vem dark theme
     Plug 'pacha/vem-dark'
     " Documentation generator
-    Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
-    " Go
     Plug 'fatih/vim-go'
 call plug#end()
