@@ -5,9 +5,6 @@ let g:python3_host_prog='${py3_loc}'
 " Must be early
 let maplocalleader = ","
 
-"" better windowing
-set hidden
-
 "" behavior
 " disable dangerous modeline
 set nomodeline
@@ -35,8 +32,6 @@ autocmd Filetype jinja setlocal ts=2 sw=2 sts=2
 autocmd Filetype markdown setlocal formatoptions+=o
 " pressing tab in insert mode is 4 spaces
 set softtabstop=4
-" autoread outside changes
-set autoread
 " integrate OS and vim clipboard
 set clipboard=unnamedplus
 " enable mouse
@@ -70,7 +65,6 @@ set number
 " highlight current line
 set cursorline
 " set colorscheme
-syntax enable
 set termguicolors
 colorscheme vem-dark
 let g:vem_colors_italic = 1
