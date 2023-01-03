@@ -1,3 +1,4 @@
+vim.cmd([[
 function! DoRemote(arg)
     UpdateRemotePlugins
 endfunction
@@ -38,3 +39,4 @@ call plug#begin('~/.config/nvim_plugins')
     " Documentation generator
     Plug 'fatih/vim-go'
 call plug#end()
+]])

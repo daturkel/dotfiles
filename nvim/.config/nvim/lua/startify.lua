@@ -1,3 +1,4 @@
+vim.cmd([[
 "" startify
 " make the area below startify screen match the theme
 autocmd User Startified 
@@ -17,3 +18,4 @@ let g:startify_lists = [
       \ { 'type': 'files',     'header': ['   Recent']            },
       \ ]
 let g:startify_bookmarks = [ {'w': '~/Documents/wiki/index.md'} ]
+]])

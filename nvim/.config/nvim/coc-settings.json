@@ -21,5 +21,6 @@
             "initializationOptions": 
                 {"usePlaceholders": true}
         }
-    }
+    },
+    "snippets.ultisnips.pythonPrompt": false
 }

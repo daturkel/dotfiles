@@ -1,3 +1,4 @@
+vim.cmd([[
 " tell vim where to find python (can't use ~/ alias here for some reason)
 let g:python_host_prog='${py2_loc}'
 let g:python3_host_prog='${py3_loc}'
@@ -100,3 +101,4 @@ let g:netrw_banner = 0
 set updatetime=150
 " don't show completion menu messages
 set shortmess+=c
+]])

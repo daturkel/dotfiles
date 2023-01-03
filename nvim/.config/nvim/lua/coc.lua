@@ -1,5 +1,4 @@
-" be sure to install coc-snippets, coc-pyright, coc-pairs, coc-json, coc-yaml with
-" CocInstall
+vim.cmd([[
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
       \ CheckBackspace() ? "\<Tab>" :
@@ -24,8 +23,7 @@ else
 endif
 
 " use enter to confirm completion
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " goto mappings
 nmap <silent> gd <Plug>(coc-definition)
@@ -34,15 +32,13 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call ShowDocumentation()<CR>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
     call CocActionAsync('doHover')
   else
-    execute '!' . &keywordprg . " " . expand('<cword>')
+    call feedkeys('K', 'in')
   endif
 endfunction
 
@@ -58,7 +54,8 @@ nmap <leader>rn <Plug>(coc-rename)
 
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
-let g:coc_global_extensions = ['coc-json', 'coc-snippets', 'coc-pyright', 'coc-pairs', 'coc-yaml']
+let g:coc_global_extensions = ['coc-json', 'coc-snippets', 'coc-pyright', 'coc-yaml']
 
 " No coc suggestions for plaintext/markdown
 autocmd FileType markdown,text let b:coc_suggest_disable = 1
+]])

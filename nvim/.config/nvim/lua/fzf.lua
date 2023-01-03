@@ -1,3 +1,4 @@
+vim.cmd([[
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
@@ -49,3 +50,4 @@ command! -bang -nargs=* CRg
   \   <bang>0)
 nnoremap <silent> <localleader>r :CRg<CR>
 nnoremap <silent> <localleader>R :CRg!<CR>
+]])

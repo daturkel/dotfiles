@@ -1,3 +1,4 @@
+vim.cmd([[
 " no folds
 let g:vim_markdown_folding_disabled = 1
 " shrink toc if possible
@@ -14,3 +15,4 @@ autocmd FileType qf nnoremap <Space> <cr>:only<cr>
 let g:vim_markdown_new_list_item_indent = 0
 " disable highlighting of blockquotes
 autocmd Filetype markdown syn clear mkdBlockquote
+]])
