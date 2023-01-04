@@ -1,8 +1,4 @@
 {
-    "pairs.enableCharacters":["(", "[", "{", "'", "\"", "`"],
-    "diagnostic.errorSign": "X",
-    "diagnostic.warningSign": "!",
-    "diagnostic.infoSign": "I",
     "python.formatting.provider": "black",
     "python.linting.enabled": false,
     "coc.source.around.disableSyntaxes": ["comment","string"],
