@@ -40,7 +40,10 @@ local on_attach = function(client, bufnr)
 end
 
 -- Code signature assistance; nvim-cmp has a source for this but it doesn't work well
-require("lsp_signature").setup()
+require("lsp_signature").setup({
+    toggle_key = "<C-s>",
+    hint_enable = false
+})
 
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
@@ -50,3 +53,8 @@ require('lspconfig')['pyright'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
+
+-- no "virtual text"
+vim.diagnostic.config({
+    virtual_text = false
+})

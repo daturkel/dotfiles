@@ -44,6 +44,7 @@ return require('packer').startup(function(use)
   use 'ray-x/lsp_signature.nvim'
   -- fzf
   use { 'junegunn/fzf', run = ":call fzf#install()" }
+  use { 'junegunn/fzf.vim' }
   -- indent guides (tab to show)
   use 'nathanaelkane/vim-indent-guides'
   -- markdown
