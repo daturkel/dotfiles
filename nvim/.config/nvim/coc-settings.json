@@ -1,13 +1,15 @@
 {
     "python.formatting.provider": "black",
-    "python.linting.enabled": false,
+    "python.linting.enabled": true,
+    "python.linting.ruffEnabled": true,
+    "pyright.disableDiagnostics": true,
     "coc.source.around.disableSyntaxes": ["comment","string"],
     "coc.source.buffer.disableSyntaxes": ["comment","string"],
     "suggest.autoTrigger": "none",
     "suggest.minTriggerInputLength": 3,
     "suggest.noselect": false,
     "python.analysis.typeCheckingMode": "off",
-    "pyright.disableDiagnostics": true,
+    "diagnostic.enableSign": false,
     "inlayHint.enable": false,
     "languageserver": {
         "golang": {
