@@ -56,5 +56,6 @@ require('lspconfig')['pyright'].setup{
 
 -- no "virtual text"
 vim.diagnostic.config({
-    virtual_text = false
+    virtual_text = false,
+    signs = false
 })
