@@ -31,8 +31,8 @@ return require('packer').startup(function(use)
   use 'cespare/vim-toml'
   -- -- code completion
   use {'neoclide/coc.nvim', branch = "release"}
-  -- lsp
-  use 'neovim/nvim-lspconfig'
+  -- -- lsp
+  -- use 'neovim/nvim-lspconfig'
   -- -- lsp completion
   -- use 'hrsh7th/cmp-nvim-lsp'
   -- use 'hrsh7th/cmp-buffer'
