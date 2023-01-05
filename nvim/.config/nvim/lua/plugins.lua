@@ -49,7 +49,7 @@ return require('packer').startup(function(use)
   use 'nathanaelkane/vim-indent-guides'
   -- markdown
   use 'godlygeek/tabular'
-  use 'plasticboy/vim-markdown'
+  use 'preservim/vim-markdown'
   -- git
   use 'tpope/vim-fugitive'
   -- wiki
@@ -58,6 +58,17 @@ return require('packer').startup(function(use)
   use 'pacha/vem-dark'
   -- golang
   use 'fatih/vim-go'
+  -- keymap popup
+  use {
+    "folke/which-key.nvim",
+      config = function()
+        vim.cmd([[
+          silent set timeout
+          silent set timeoutlen=500
+        ]])
+        require("which-key").setup({plugins = { spelling = { enabled = true } } })
+     end
+  }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

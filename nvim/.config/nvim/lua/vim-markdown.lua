@@ -13,6 +13,4 @@ autocmd Filetype markdown nnoremap <silent> <localleader>j :Toch<cr>
 autocmd FileType qf nnoremap <Space> <cr>:only<cr>
 " don't add indent to new list items
 let g:vim_markdown_new_list_item_indent = 0
-" disable highlighting of blockquotes
-autocmd Filetype markdown syn clear mkdBlockquote
 ]])
