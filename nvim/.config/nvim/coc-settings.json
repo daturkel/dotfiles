@@ -2,6 +2,7 @@
     "python.formatting.provider": "black",
     "python.linting.enabled": true,
     "python.linting.ruffEnabled": true,
+    "python.linting.mypyEnabled": true,
     "pyright.disableDiagnostics": true,
     "coc.source.around.disableSyntaxes": ["comment","string"],
     "coc.source.buffer.disableSyntaxes": ["comment","string"],
