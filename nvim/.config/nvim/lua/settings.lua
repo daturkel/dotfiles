@@ -1,10 +1,15 @@
+vim.g.maplocalleader = ','
+vim.g.mapleader = ' '
+
+-- don't show partial commands in command bar
+vim.opt.showcmd = false
+
 vim.cmd([[
 " tell vim where to find python (can't use ~/ alias here for some reason)
 let g:python_host_prog='${py2_loc}'
 let g:python3_host_prog='${py3_loc}'
 
 " Must be early
-let maplocalleader = ","
 
 "" behavior
 " disable dangerous modeline

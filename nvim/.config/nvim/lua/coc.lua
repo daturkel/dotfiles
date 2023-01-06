@@ -28,8 +28,9 @@ function _G.show_docs()
 end
 vim.keymap.set("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
 
--- Show all diagnostics with space-a
-vim.keymap.set("n", "<space>a", ":<C-u>CocList diagnostics<cr>", {silent = true, nowait = true})
+-- Show all diagnostics with space-d
+vim.keymap.set("n", "<leader>d", ":<C-u>CocList diagnostics<cr>", {silent = true, nowait = true, desc = 'Diagnostics'})
+vim.keymap.set("n", "<leader>r", "<Plug>(coc-rename)", {silent = true, nowait = true, desc = 'Rename'})
 -- Use `[g` and `]g` to navigate diagnostics
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
 vim.keymap.set("n", "[g", "<Plug>(coc-diagnostic-prev)", {silent = true})
@@ -57,9 +58,6 @@ vim.g.coc_snippet_prev = "<S-Tab>"
 vim.cmd([[
 "" " ,b for formatting
 "" nmap <localleader>b  <Plug>(coc-format)
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
 
 " No coc suggestions for plaintext/markdown
 autocmd FileType markdown,text let b:coc_suggest_disable = 1
