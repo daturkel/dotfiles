@@ -34,6 +34,7 @@ autocmd Filetype css setlocal ts=2 sw=2 sts=2
 autocmd Filetype scss setlocal ts=2 sw=2 sts=2
 autocmd Filetype htmldjango setlocal ts=2 sw=2 sts=2
 autocmd Filetype jinja setlocal ts=2 sw=2 sts=2
+autocmd Filetype lua setlocal ts=2 sw=2 sts=2
 " pressing o continues bulleted list in markdown
 autocmd Filetype markdown setlocal formatoptions+=o
 " pressing tab in insert mode is 4 spaces

@@ -63,11 +63,18 @@ return require('packer').startup(function(use)
     "folke/which-key.nvim",
       config = function()
         vim.cmd([[
-          silent set timeout
-          silent set timeoutlen=500
+          set timeout
+          set timeoutlen=500
         ]])
         require("which-key").setup({plugins = { spelling = { enabled = true } } })
      end
+  }
+  -- Auto highlight/unhighlight search results
+  use {
+    "asiryk/auto-hlsearch.nvim",
+      config = function()
+        require("auto-hlsearch").setup()
+      end
   }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

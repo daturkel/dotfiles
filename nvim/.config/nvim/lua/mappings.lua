@@ -3,9 +3,6 @@ vim.keymap.set({'n', 'x'},'m','d')
 vim.keymap.set('n', 'mm', 'dd')
 vim.keymap.set('n', 'M', 'D')
 
--- remap enter to clear highlighting
-vim.keymap.set('n', '<CR>', ':noh<CR>', {silent = true})
-
 -- don't use Ex more, use Q for formatting
 vim.keymap.set({'n', 'v', 'o'}, 'Q', 'gq', {remap = true})
 
