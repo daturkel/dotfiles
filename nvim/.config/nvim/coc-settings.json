@@ -21,5 +21,8 @@
                 {"usePlaceholders": true}
         }
     },
-    "snippets.ultisnips.pythonPrompt": false
+    "snippets.ultisnips.pythonPrompt": false,
+    "outline.codeActionKinds": ["","quickfix"],
+    "outline.expandLevel": 0,
+    "outline.sortBy": "position"
 }

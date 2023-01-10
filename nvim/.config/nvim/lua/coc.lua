@@ -30,7 +30,12 @@ vim.keymap.set("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
 
 -- Show all diagnostics with space-d
 vim.keymap.set("n", "<leader>d", ":<C-u>CocList diagnostics<cr>", {silent = true, nowait = true, desc = 'Diagnostics'})
+-- Rename with space r
 vim.keymap.set("n", "<leader>r", "<Plug>(coc-rename)", {silent = true, nowait = true, desc = 'Rename'})
+-- Search symbols with space-s
+vim.keymap.set("n", "<leader>s", ":<C-u>CocList -I symbols<cr>", {silent = true, nowait = true, desc = 'Symbols'})
+-- Document symbol outline with space-o
+vim.keymap.set("n", "<leader>o", ":<C-u>CocOutline<cr>", {silent = true, nowait = true, desc = 'Outline'})
 -- Use `[g` and `]g` to navigate diagnostics
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
 vim.keymap.set("n", "[g", "<Plug>(coc-diagnostic-prev)", {silent = true})

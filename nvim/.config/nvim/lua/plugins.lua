@@ -30,21 +30,12 @@ return require('packer').startup(function(use)
   -- toml syntax
   use 'cespare/vim-toml'
   -- -- code completion
-  use {'neoclide/coc.nvim', branch = "release"}
-  -- -- lsp
-  -- use 'neovim/nvim-lspconfig'
-  -- -- lsp completion
-  -- use 'hrsh7th/cmp-nvim-lsp'
-  -- use 'hrsh7th/cmp-buffer'
-  -- use 'hrsh7th/cmp-path'
-  -- use 'hrsh7th/cmp-cmdline'
-  -- use 'hrsh7th/nvim-cmp'
-  -- use 'L3MON4D3/LuaSnip'
-  -- use 'saadparwaiz1/cmp_luasnip'
-  -- use 'ray-x/lsp_signature.nvim'
+  use {'neoclide/coc.nvim', branch = 'release' }
   -- fzf
   use { 'junegunn/fzf', run = ":call fzf#install()" }
   use { 'junegunn/fzf.vim' }
+  -- coc + fzf
+  use { 'antoinemadec/coc-fzf', branch = 'release' }
   -- indent guides (tab to show)
   use 'nathanaelkane/vim-indent-guides'
   -- markdown
