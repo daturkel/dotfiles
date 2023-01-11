@@ -21,6 +21,8 @@ return require('packer').startup(function(use)
   use 'tpope/vim-repeat'
   -- minimal statusline
   use 'itchyny/lightline.vim'
+  -- colorschemes
+  use 'pacha/vem-dark'
   -- latex
   use 'lervag/vimtex'
   -- python formatting
@@ -31,11 +33,6 @@ return require('packer').startup(function(use)
   use 'cespare/vim-toml'
   -- -- code completion
   use {'neoclide/coc.nvim', branch = 'release' }
-  -- fzf
-  use { 'junegunn/fzf', run = ":call fzf#install()" }
-  use { 'junegunn/fzf.vim' }
-  -- coc + fzf
-  use { 'antoinemadec/coc-fzf', branch = 'release' }
   -- indent guides (tab to show)
   use 'nathanaelkane/vim-indent-guides'
   -- markdown
@@ -45,8 +42,6 @@ return require('packer').startup(function(use)
   use 'tpope/vim-fugitive'
   -- wiki
   use 'lervag/wiki.vim'
-  -- colorscheme
-  use 'pacha/vem-dark'
   -- golang
   use 'fatih/vim-go'
   -- keymap popup
@@ -67,6 +62,17 @@ return require('packer').startup(function(use)
         require("auto-hlsearch").setup()
       end
   }
+  -- finder
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
+  use 'fannheyward/telescope-coc.nvim'
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

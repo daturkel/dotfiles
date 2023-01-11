@@ -28,14 +28,33 @@ function _G.show_docs()
 end
 vim.keymap.set("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
 
--- Show all diagnostics with space-d
-vim.keymap.set("n", "<leader>d", ":<C-u>CocList diagnostics<cr>", {silent = true, nowait = true, desc = 'Diagnostics'})
 -- Rename with space r
 vim.keymap.set("n", "<leader>r", "<Plug>(coc-rename)", {silent = true, nowait = true, desc = 'Rename'})
--- Search symbols with space-s
-vim.keymap.set("n", "<leader>s", ":<C-u>CocList -I symbols<cr>", {silent = true, nowait = true, desc = 'Symbols'})
--- Document symbol outline with space-o
-vim.keymap.set("n", "<leader>o", ":<C-u>CocOutline<cr>", {silent = true, nowait = true, desc = 'Outline'})
+-- toggle outline
+vim.cmd([[
+  function! ToggleOutline() abort
+    let winid = coc#window#find('cocViewId', 'OUTLINE')
+    if winid == -1
+      call coc#rpc#notify('showOutline', [])
+    else
+      call coc#window#close(winid)
+    endif
+  endfunction
+  ]])
+vim.keymap.set("n","<leader>o",":call ToggleOutline()<CR>",{ silent = true, nowait = true, desc = "Outline"})
+-- Close outline if it's the only thing left
+vim.cmd([[
+  autocmd BufEnter * call CheckOutline()
+  function! CheckOutline() abort
+    if &filetype ==# 'coctree' && winnr('$') == 1
+      if tabpagenr('$') != 1
+        close
+      else
+        bdelete
+      endif
+    endif
+  endfunction
+]])
 -- Use `[g` and `]g` to navigate diagnostics
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
 vim.keymap.set("n", "[g", "<Plug>(coc-diagnostic-prev)", {silent = true})
