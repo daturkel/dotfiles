@@ -48,14 +48,14 @@ class Deploy:
                     pass
                 shutil.copytree(project, new_path, ignore=self._ignore_files)
                 old_files = []
-                for root, directory, files in os.walk(project):
+                for root, _, files in os.walk(project):
                     for file_ in files:
                         old_files.append(os.path.join(root, file_))
                 old_files = [file_ for file_ in old_files if os.path.isfile(file_)]
                 for file_ in old_files:
                     old_file = re.search(r"[^/]+/(.*)", file_).group(1)
                     new_name = os.path.join(new_path, old_file)
-                    if old_file in self.files[project]:
+                    if old_file in self.files.get(project, []):
                         with open(file_) as f:
                             tmp = Template(f.read())
                         new = tmp.safe_substitute(self.profiles[profile])
