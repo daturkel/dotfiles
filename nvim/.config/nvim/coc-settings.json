@@ -9,7 +9,10 @@
     "suggest.minTriggerInputLength": 3,
     "suggest.noselect": false,
     "python.analysis.typeCheckingMode": "basic",
-    "diagnostic.enableSign": false,
+    "diagnostic.enableSign": true,
+    "diagnostic.errorSign": "",
+    "diagnostic.infoSign": "",
+    "diagnostic.hintSign": "",
     "pyright.disableLanguageServices": false,
     "inlayHint.enable": false,
     "languageserver": {

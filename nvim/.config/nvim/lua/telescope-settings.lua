@@ -18,9 +18,7 @@ require("telescope").setup({
     layout_config = {
       center = {
         preview_cutoff = 1,
-        height = function(_,_,max_lines)
-          return math.min(max_lines, 12)
-        end,
+        width = 0.66,
       },
     },
     preview = {
@@ -56,6 +54,7 @@ vim.keymap.set('n', '<localleader>l', builtin.current_buffer_fuzzy_find, { desc 
 vim.keymap.set('n', '<localleader>m', builtin.buffers, { desc = "Buffers", silent = true })
 vim.keymap.set('n', '<localleader>r', builtin.live_grep, { desc = "Grep", silent = true})
 vim.keymap.set('n', '<localleader>h', builtin.oldfiles, { desc = "Recent files", silent = true})
+vim.keymap.set('n', '<localleader>t', ':Telescope builtin previewer=false<cr>', { desc = "Telescope", silent = true})
 vim.keymap.set('n', '<localleader>d', ':Telescope coc diagnostics<cr>', { desc = "Diagnostics", silent = true})
 vim.keymap.set('n', '<localleader>s', ':Telescope coc document_symbols<cr>', { desc = "Symbols", silent = true})
 vim.keymap.set('n', '<localleader>S', ':Telescope coc workspace_symbols<cr>', { desc = "Workspace symbols", silent = true})

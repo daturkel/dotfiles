@@ -79,6 +79,15 @@ vim.g.coc_global_extensions = {'coc-json', 'coc-snippets', 'coc-pyright', 'coc-y
 vim.g.coc_snippet_next = "<Tab>"
 vim.g.coc_snippet_prev = "<S-Tab>"
 
+-- Override some color stuff
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern="*",
+  callback = function()
+    vim.api.nvim_set_hl(0, "CocFadeOut", { cterm=underline, underline=true, sp='fg' })   
+  end,
+})
+
+
 vim.cmd([[
 "" " ,b for formatting
 "" nmap <localleader>b  <Plug>(coc-format)
