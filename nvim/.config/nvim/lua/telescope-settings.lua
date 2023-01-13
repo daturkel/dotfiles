@@ -3,6 +3,7 @@ local layout = require('telescope.actions.layout')
 
 require("telescope").setup({
   defaults = {
+    path_display = { "smart" },
     prompt_title = false,
     results_title = false,
     preview_title = false,

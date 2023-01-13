@@ -5,18 +5,11 @@ vim.g.mapleader = ' '
 vim.opt.showcmd = false
 
 vim.cmd([[
-function! SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
-
 " tell vim where to find python (can't use ~/ alias here for some reason)
 let g:python_host_prog='${py2_loc}'
 let g:python3_host_prog='${py3_loc}'
 
-" Must be early
+set signcolumn=number
 
 "" behavior
 " disable dangerous modeline
