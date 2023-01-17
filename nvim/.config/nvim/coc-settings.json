@@ -10,9 +10,10 @@
     "suggest.noselect": false,
     "python.analysis.typeCheckingMode": "basic",
     "diagnostic.enableSign": true,
-    "diagnostic.errorSign": "",
-    "diagnostic.infoSign": "",
-    "diagnostic.hintSign": "",
+    "diagnostic.errorSign": "",
+    "diagnostic.infoSign": "",
+    "diagnostic.hintSign": "",
+    "diagnostic.warningSign": "",
     "pyright.disableLanguageServices": false,
     "inlayHint.enable": false,
     "languageserver": {
