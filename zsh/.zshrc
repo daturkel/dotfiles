@@ -33,7 +33,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(colorize shrink-path ripgrep docker)
+plugins=(shrink-path docker)
 
 # make vi mode transition faster
 export KEYTIMEOUT=1
@@ -112,13 +112,13 @@ ts(){
 
 $misc_exports
 
-# don't share history between panes
-unsetopt inc_append_history
-unsetopt share_history
+# # don't share history between panes
+# unsetopt inc_append_history
+# unsetopt share_history
 
-eval "$(pyenv init --path)"
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
@@ -127,4 +127,3 @@ export GOPATH=$HOME/go
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
