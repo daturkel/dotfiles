@@ -12,7 +12,6 @@ files.nvim = ['.config/nvim/lua/settings.lua']
 home_dir = '/Users/danturkel/'
 zsh_path = '/Library/Frameworks/GDAL.framework/Programs:/usr/local/bin:/Users/danturkel/.rvm/gems/ruby-2.1.1/bin:/Users/danturkel/.rvm/gems/ruby-2.1.1@global/bin:/Users/danturkel/.rvm/rubies/ruby-2.1.1/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/MacGPG2/bin:/Library/TeX/texbin:/Applications/sage:/usr/local/sbin:/usr/local/drush:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:/usr/X11/bin:/Users/danturkel/.rvm/gems/ruby-2.0.0-p247/bin:/usr/texbin:/sw/bin:/Users/danturkel/.rvm/bin:/usr/local/opt/fzf/bin:/Users/danturkel/.cargo/bin:/Users/danturkel/.poetry/bin:/usr/local/go/bin'
 aliases=""
-misc_exports = ''
 py2_loc = '/Users/danturkel/.pyenv/versions/2.7.17/bin/python'
 py3_loc = '/Users/danturkel/.pyenv/versions/3.8.1/bin/python'
 py3_bin_loc = '/Users/danturkel/.pyenv/versions/3.8.1/bin'
@@ -25,7 +24,6 @@ aliases = """
 source ~/.zshrc-extra
 alias rp='cd ~/Repos/'
 """
-misc_exports = ''
 py2_loc = ''
 py3_loc = '/Users/danturkel/.pyenv/versions/3.10.6/bin/python'
 py3_bin_loc = '/Users/danturkel/.pyenv/versions/3.10.6/bin/python'

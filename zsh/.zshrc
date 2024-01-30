@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# # Path to your oh-my-zsh installation.
+# Path to your oh-my-zsh installation.
 export ZSH=${home_dir}.oh-my-zsh
 
 # Look in ~/.oh-my-zsh/themes/
@@ -89,8 +89,6 @@ bindkey "^o" fzf_grep_edit
 bindkey "^s" fzf-cd-widget
 
 export FZF_CTRL_R_OPTS='--preview-window="hidden"'
-
-$misc_exports
 
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
