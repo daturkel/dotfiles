@@ -19,7 +19,7 @@ py3_bin_loc = '/Users/danturkel/.pyenv/versions/3.8.1/bin'
 
 [profile.home_new]
 home_dir = '/Users/danturkel/'
-zsh_path = '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin/opt/local/bin:/opt/local/sbin'
+zsh_path = '/opt/homebrew/bin'
 aliases=""
 py2_loc = ''
 py3_loc = '/Users/danturkel/.pyenv/versions/3.12.4/bin/python'

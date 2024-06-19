@@ -1,9 +1,9 @@
 export ZSH=$HOME/.zsh
 
 # Path
-export PATH=$zsh_path
-export PATH=$PATH:~/.cargo/bin
-export PATH=$PATH:~/go/bin
+export PATH=$PATH:$zsh_path
+# export PATH=$PATH:~/.cargo/bin
+# export PATH=$PATH:~/go/bin
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -70,6 +70,7 @@ _comp_options+=(globdots) # With hidden files
 # ctrl-s: CD
 # ctrl-r: zsh history
 # ctrl-w: wiki
+source <(fzf --zsh)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="rg --files 2> /dev/null"
 export FZF_DEFAULT_OPTS="--preview '[[ \$(file --mime {}) = binary ]] &&
