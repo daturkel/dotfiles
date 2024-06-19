@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from string import Template
-import toml
+import tomllib
 import pathlib
 import os
 import shutil
@@ -11,8 +11,8 @@ import re
 
 class Deploy:
     def __init__(self):
-        with open("config.toml") as config_file:
-            self.config = toml.load(config_file)
+        with open("config.toml","rb") as config_file:
+            self.config = tomllib.load(config_file)
 
         self.projects = self.config["settings"]["projects"]
         self.files = self.config["settings"]["files"]
