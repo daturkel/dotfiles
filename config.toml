@@ -17,6 +17,15 @@ py3_loc = '/Users/danturkel/.pyenv/versions/3.8.1/bin/python'
 py3_bin_loc = '/Users/danturkel/.pyenv/versions/3.8.1/bin'
 
 
+[profile.home_new]
+home_dir = '/Users/danturkel/'
+zsh_path = '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin/opt/local/bin:/opt/local/sbin'
+aliases=""
+py2_loc = ''
+py3_loc = '/Users/danturkel/.pyenv/versions/3.12.4/bin/python'
+py3_bin_loc = '/Users/danturkel/.pyenv/versions/3.12.4/bin'
+
+
 [profile.hinge]
 home_dir = '/Users/danturkel/'
 zsh_path = '/Users/danturkel/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/TeX/texbin'
