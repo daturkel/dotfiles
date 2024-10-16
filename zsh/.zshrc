@@ -25,8 +25,8 @@ bindkey -M vicmd "$terminfo[kcud1]" history-beginning-search-forward
 bindkey -M viins "$terminfo[kcuu1]" history-beginning-search-backward
 bindkey -M viins "$terminfo[kcud1]" history-beginning-search-forward
 
-export EDITOR="/usr/local/bin/nvim"
-export VISUAL="/usr/local/bin/nvim"
+export EDITOR="/opt/homebrew/bin/nvim"
+export VISUAL="/opt/homebrew/bin/nvim"
 
 # edit commands in editor
 autoload -z edit-command-line

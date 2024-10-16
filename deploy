@@ -62,10 +62,11 @@ class Deploy:
                         with open(new_name, "w") as f:
                             f.write(new)
                     else:
-                        os.symlink(
-                            os.path.join(pathlib.Path.cwd(), pathlib.Path(file_)),
-                            pathlib.Path(new_name),
-                        )
+                        # os.symlink(
+                        #     os.path.join(pathlib.Path.cwd(), pathlib.Path(file_)),
+                        #     pathlib.Path(new_name),
+                        # )
+                        shutil.copy(file_, new_name)
 
     def _ignore_files(self, directory, files):
         return [f for f in files if os.path.isfile(os.path.join(directory, f))]
