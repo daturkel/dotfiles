@@ -9,6 +9,9 @@ vim.keymap.set({'n', 'v', 'o'}, 'Q', 'gq', {remap = true})
 -- we use C-I for indent guides, so let's use C-P for go to next jump
 vim.keymap.set("n", "<C-P>", "<C-I>")
 
+-- enter clears highlights
+vim.keymap.set("n", "<CR>", ":noh<CR>")
+
 -- better split management
 vim.keymap.set('n', '<C-J>', '<C-W><C-J>')
 vim.keymap.set('n', '<C-K>', '<C-W><C-K>')

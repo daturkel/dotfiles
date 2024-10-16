@@ -1,9 +1,5 @@
 export ZSH=$HOME/.zsh
-
-# Path
 export PATH=$PATH:$zsh_path
-# export PATH=$PATH:~/.cargo/bin
-# export PATH=$PATH:~/go/bin
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -44,13 +40,12 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey '^[[A' history-beginning-search-backward-end
 bindkey '^[[B' history-beginning-search-forward-end
-HISTFILE="$ZSH/.zsh_history"     # History filepath
+HISTFILE="$HOME/.zsh_history"     # History filepath
 HISTSIZE=10000000
 SAVEHIST=10000000
-HISTORY_IGNORE="(ls|cd|pwd|exit|cd)*"
+HISTORY_IGNORE="(ls|cd|pwd|exit)*"
 HIST_STAMPS="yyyy-mm-dd"
 setopt EXTENDED_HISTORY      # Write the history file in the ':start:elapsed;command' format.
-setopt INC_APPEND_HISTORY    # Write to the history file immediately, not when the shell exits.
 setopt SHARE_HISTORY         # Share history between all sessions.
 setopt HIST_IGNORE_DUPS      # Do not record an event that was just recorded again.
 setopt HIST_IGNORE_ALL_DUPS  # Delete an old recorded event if a new event is a duplicate.
