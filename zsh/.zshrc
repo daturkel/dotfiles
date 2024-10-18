@@ -56,6 +56,8 @@ setopt HIST_REDUCE_BLANKS    # Remove superfluous blanks from each command line 
 # completion
 autoload -U compinit; compinit
 _comp_options+=(globdots) # With hidden files
+zstyle ':completion:*' completer _extensions _complete _approximate
+zstyle ':completion:*' menu select
 
 # FZF
 # ctrl-t: files, but just completes filename, doesn't open
