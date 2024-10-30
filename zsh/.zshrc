@@ -99,6 +99,7 @@ export FZF_CTRL_R_OPTS='--preview-window="hidden"'
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 
 # Aliases
+alias gpc='git push origin "$(git rev-parse --abbrev-ref HEAD)"'
 alias vim='nvim'
 alias cr='cd $(git rev-parse --show-toplevel)'
 # make directories including parents
@@ -107,7 +108,6 @@ alias gs='git status'
 alias ga='git add'
 alias gc='git checkout'
 alias gl='git log --oneline'
-alias gpo='git push origin'
 alias ci='code-insiders'
 $aliases
 
