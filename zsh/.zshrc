@@ -99,7 +99,6 @@ export FZF_CTRL_R_OPTS='--preview-window="hidden"'
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 
 # Aliases
-alias gpc='git push origin "$(git rev-parse --abbrev-ref HEAD)"'
 alias vim='nvim'
 alias cr='cd $(git rev-parse --show-toplevel)'
 # make directories including parents
@@ -107,18 +106,17 @@ alias mkdir='mkdir -pv'
 alias gs='git status'
 alias ga='git add'
 alias gc='git checkout'
+alias gs='git switch'
 alias gl='git log --oneline'
 alias ci='code-insiders'
 $aliases
 
-
-# Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
 # go
 export GOPATH=$HOME/go
+
+# uv
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
