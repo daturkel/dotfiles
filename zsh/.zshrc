@@ -108,7 +108,8 @@ alias ga='git add'
 alias gc='git checkout'
 alias gs='git switch'
 alias gl='git log --oneline'
-alias ci='code-insiders'
+alias v='source ./.venv/bin/activate'
+alias vv='source ~/.venv/bin/activate'
 $aliases
 
 # go
