@@ -52,6 +52,7 @@ setopt HIST_SAVE_NO_DUPS     # Do not write a duplicate event to the history fil
 setopt HIST_VERIFY           # Do not execute immediately upon history expansion.
 setopt HIST_NO_STORE         # Don't store history commands
 setopt HIST_REDUCE_BLANKS    # Remove superfluous blanks from each command line being added to the history.
+setopt transient_rprompt # remove the right prompt from anything other than current line
 
 # completion
 autoload -U compinit; compinit
