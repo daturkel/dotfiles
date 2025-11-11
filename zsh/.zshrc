@@ -65,7 +65,6 @@ zstyle ':completion:*' menu select
 # ctrl-o: search file lines, open editor
 # ctrl-s: CD
 # ctrl-r: zsh history
-# ctrl-w: wiki
 source <(fzf --zsh)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="rg --files 2> /dev/null"
@@ -89,7 +88,7 @@ fzf_grep_edit(){
 
 zle -N fzf_grep_edit
 bindkey "^o" fzf_grep_edit
-bindkey "^s" fzf-cd-widget
+bindkey "^s" fzf_cd_widget
 
 export FZF_CTRL_R_OPTS='--preview-window="hidden"'
 
