@@ -62,35 +62,17 @@ zstyle ':completion:*' menu select
 
 # FZF
 # ctrl-t: files, but just completes filename, doesn't open
-# ctrl-o: search file lines, open editor
-# ctrl-s: CD
+# alt-c:  cd
 # ctrl-r: zsh history
 source <(fzf --zsh)
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="rg --files 2> /dev/null"
-export FZF_DEFAULT_OPTS="--preview '[[ \$(file --mime {}) = binary ]] &&
-    echo {} is a binary file ||
-    (bat --color=always {} ||
-    cat {}) 2> /dev/null | head -500'"
+export FZF_DEFAULT_OPTS="--style minimal --preview 'bat -p --color=always {}'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS"
-fzf_grep_edit(){
-    local match=$(
-      rg --color=never --line-number "" |
-        fzf --no-multi --delimiter : \
-            --preview "bat --color=always --line-range {2}: {1}"
-      )
-    local file=$(echo "$match" | cut -d':' -f1)
-    if [[ -n $file ]]; then
-        $EDITOR $file +$(echo "$match" | cut -d':' -f2)
-    fi
-}
-
-zle -N fzf_grep_edit
-bindkey "^o" fzf_grep_edit
-bindkey "^s" fzf_cd_widget
 
 export FZF_CTRL_R_OPTS='--preview-window="hidden"'
+bindkey -r '^G'
+source ~/.fzf-git.sh
 
 # Haskell
 [ -f "/Users/danturkel/.ghcup/env" ] && source "/Users/danturkel/.ghcup/env" # ghcup-env
