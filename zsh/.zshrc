@@ -55,7 +55,8 @@ setopt HIST_REDUCE_BLANKS    # Remove superfluous blanks from each command line 
 setopt transient_rprompt # remove the right prompt from anything other than current line
 
 # completion
-autoload -U compinit; compinit
+# -C skips compaudit security check (saves ~15ms); run compinit without -C occasionally to recheck
+autoload -U compinit; compinit -C
 _comp_options+=(globdots) # With hidden files
 zstyle ':completion:*' completer _extensions _complete _approximate
 zstyle ':completion:*' menu select
@@ -97,9 +98,13 @@ $aliases
 # go
 export GOPATH=$HOME/go
 
-# uv
-eval "$(uv generate-shell-completion zsh)"
-eval "$(uvx --generate-shell-completion zsh)"
+# uv - completions cached to avoid subprocess cost on every startup
+if [[ ! -f ~/.cache/zsh/completions/_uv ]]; then
+  mkdir -p ~/.cache/zsh/completions
+  uv generate-shell-completion zsh > ~/.cache/zsh/completions/_uv
+  uvx --generate-shell-completion zsh > ~/.cache/zsh/completions/_uvx
+fi
+fpath=(~/.cache/zsh/completions $fpath)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
