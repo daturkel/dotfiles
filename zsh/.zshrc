@@ -72,6 +72,33 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS"
 
 export FZF_CTRL_R_OPTS='--preview-window="hidden"'
+rg-fzf-widget() {
+  local RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
+
+  local selected=$(
+    fzf --ansi \
+        --disabled \
+        --bind "start:reload:$RG_PREFIX ''" \
+        --bind "change:reload:sleep 0.1; $RG_PREFIX {q} || true" \
+        --bind "enter:accept" \
+        --bind "ctrl-e:execute($EDITOR {1} +{2})+abort" \
+        --delimiter : \
+        --preview 'bat --color=always {1} --highlight-line {2}' \
+        --preview-window 'right:60%:+{2}+3/3' \
+        --header 'Enter: insert | Ctrl-E: edit'
+  )
+
+  if [[ -n "$selected" ]]; then
+    local file=$(echo "$selected" | cut -d: -f1)
+    local line=$(echo "$selected" | cut -d: -f2)
+    LBUFFER="${LBUFFER}${file}"
+  fi
+
+  zle redisplay
+}
+zle -N rg-fzf-widget
+bindkey '^g' rg-fzf-widget
+
 
 # Haskell
 [ -f "/Users/danturkel/.ghcup/env" ] && source "/Users/danturkel/.ghcup/env" # ghcup-env
