@@ -72,8 +72,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS"
 
 export FZF_CTRL_R_OPTS='--preview-window="hidden"'
-bindkey -r '^G'
-source ~/.fzf-git.sh
 
 # Haskell
 [ -f "/Users/danturkel/.ghcup/env" ] && source "/Users/danturkel/.ghcup/env" # ghcup-env
