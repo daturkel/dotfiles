@@ -70,6 +70,8 @@ export FZF_DEFAULT_COMMAND="rg --files 2> /dev/null"
 export FZF_DEFAULT_OPTS="--style minimal --preview 'bat -p --color=always {}'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS"
+bindkey -r '^G'
+source ~/fzf-git.sh
 
 export FZF_CTRL_R_OPTS='--preview-window="hidden"'
 rg-fzf-widget() {
@@ -97,7 +99,7 @@ rg-fzf-widget() {
   zle redisplay
 }
 zle -N rg-fzf-widget
-bindkey '^g' rg-fzf-widget
+bindkey '^l' rg-fzf-widget
 
 
 # Haskell
@@ -105,6 +107,19 @@ bindkey '^g' rg-fzf-widget
 
 # OpenSSL
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
+
+# git diff between two refs (tags, branches, etc.) with optional path
+gd() {
+  git diff "$1" "$2" -- "${3:-.}"
+}
+_gd() {
+  local refs=($(git tag 2>/dev/null) main master)
+  _arguments \
+    '1:from ref:($refs)' \
+    '2:to ref:($refs)' \
+    '3:path:_files'
+}
+compdef _gd gd
 
 # Aliases
 alias vim='nvim'
