@@ -70,6 +70,11 @@ require("lazy").setup({
   { "williamboman/mason-lspconfig.nvim" },
   { "neovim/nvim-lspconfig" },
   { "ray-x/lsp_signature.nvim" },
+  -- completion (active after CoC is removed in a later step)
+  { "hrsh7th/nvim-cmp" },
+  { "hrsh7th/cmp-nvim-lsp" },
+  { "hrsh7th/cmp-buffer" },
+  { "hrsh7th/cmp-path" },
   { "asiryk/auto-hlsearch.nvim", config = function()
       require("auto-hlsearch").setup()
     end
