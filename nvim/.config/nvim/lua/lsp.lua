@@ -8,7 +8,8 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "gD",         vim.lsp.buf.declaration,   e("Go to declaration"))
   vim.keymap.set("n", "gr",         vim.lsp.buf.references,    e("References"))
   vim.keymap.set("n", "gi",         vim.lsp.buf.implementation, opts)
-  vim.keymap.set("n", "K",          vim.lsp.buf.hover,         opts)
+  -- press K twice to focus the hover window for scrolling
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
   vim.keymap.set("n", "<leader>r",  vim.lsp.buf.rename,        e("Rename"))
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action,   e("Code action"))
   vim.keymap.set("n", "<leader>o",  function()
@@ -42,7 +43,6 @@ require("mason-lspconfig").setup({
 
 vim.diagnostic.config({ virtual_text = false, signs = false })
 
-vim.o.winborder = "rounded"
 local _hover = vim.lsp.buf.hover
 vim.lsp.buf.hover = function()
   _hover({ max_height = 20, max_width = 80 })
