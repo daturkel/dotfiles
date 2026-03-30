@@ -24,6 +24,7 @@ require("lazy").setup({
           python = { "ruff_format" },
           go = { "gofmt" },
         },
+        format_on_save = { timeout_ms = 500 },
         -- ruff auto-discovers pyproject.toml config walking up from the file
       })
       vim.api.nvim_create_autocmd("FileType", {
