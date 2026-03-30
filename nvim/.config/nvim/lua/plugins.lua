@@ -50,7 +50,13 @@ require("lazy").setup({
       })
     end
   },
-  { "nathanaelkane/vim-indent-guides" },
+  { "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    config = function()
+      require("ibl").setup({ indent = { char = "│" } })
+      vim.keymap.set("n", "<C-i>", ":IBLToggle<CR>", { silent = true, desc = "Toggle indent guides" })
+    end
+  },
   { "pacha/vem-dark", priority = 1000 },
   { "neoclide/coc.nvim", branch = "release" },
   { "asiryk/auto-hlsearch.nvim", config = function()
