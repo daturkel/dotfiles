@@ -1,8 +1,7 @@
 vim.g.maplocalleader = ','
 vim.g.mapleader = ' '
 
--- python interpreter paths (substituted by deploy script)
-vim.g.python_host_prog = '${py2_loc}'
+-- python interpreter path (substituted by deploy script)
 vim.g.python3_host_prog = '${py3_loc}'
 
 -- don't show partial commands in command bar
@@ -18,24 +17,22 @@ vim.opt.expandtab = true        -- tabs are spaces
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.clipboard = "unnamedplus"
-vim.opt.mouse = "a"
-vim.opt.history = 700
 vim.opt.ignorecase = true
 vim.opt.smartcase = true        -- case sensitive once an upper case letter is used
 vim.opt.formatoptions:append("or")  -- automatic comment continuation
-vim.opt.wildmode = "full"
+vim.opt.wildoptions = "pum"     -- popup completion menu
 vim.opt.splitbelow = true
 vim.opt.signcolumn = "number"
 vim.opt.updatetime = 150
 vim.opt.shortmess:append("c")   -- don't show completion menu messages
 vim.opt.conceallevel = 0
+vim.opt.undofile = true         -- persistent undo across sessions
 
 -- ── Appearance ────────────────────────────────────────────────────────────────
 
 vim.opt.number = true
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
-vim.opt.showmatch = true        -- show matching brackets
 
 -- ── Netrw ─────────────────────────────────────────────────────────────────────
 
@@ -45,7 +42,7 @@ vim.g.netrw_banner = 0
 -- ── Filetype-specific tab widths ──────────────────────────────────────────────
 
 local tw = vim.api.nvim_create_augroup("TabWidth", { clear = true })
-for _, ft in ipairs({ "html", "markdown", "css", "scss", "htmldjango", "jinja", "lua" }) do
+for _, ft in ipairs({ "html", "markdown", "css", "scss", "htmldjango", "jinja", "lua", "yaml" }) do
   vim.api.nvim_create_autocmd("FileType", {
     group = tw,
     pattern = ft,
@@ -57,22 +54,10 @@ for _, ft in ipairs({ "html", "markdown", "css", "scss", "htmldjango", "jinja", 
   })
 end
 
--- pressing o continues bulleted list in markdown
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "markdown",
-  callback = function() vim.opt_local.formatoptions:append("o") end,
-})
-
--- yaml
+-- detect yaml files
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
   pattern = { "*.yaml", "*.yml" },
-  callback = function()
-    vim.opt_local.filetype = "yaml"
-    vim.opt_local.tabstop = 2
-    vim.opt_local.shiftwidth = 2
-    vim.opt_local.softtabstop = 2
-    vim.opt_local.expandtab = true
-  end,
+  callback = function() vim.opt_local.filetype = "yaml" end,
 })
 
 -- strip trailing whitespace for python and sql on save
@@ -122,4 +107,3 @@ vim.api.nvim_create_autocmd("BufLeave", {
   pattern = "term://*",
   callback = function() vim.cmd("stopinsert") end,
 })
-
