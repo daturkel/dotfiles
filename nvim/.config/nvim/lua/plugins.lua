@@ -17,7 +17,25 @@ require("lazy").setup({
   { "lervag/wiki.vim" },
   { "lervag/vimtex", ft = "tex" },
   { "mhinz/vim-startify" },
-  { "psf/black", ft = "python" },
+  { "stevearc/conform.nvim",
+    config = function()
+      require("conform").setup({
+        formatters_by_ft = {
+          python = { "ruff_format" },
+          go = { "gofmt" },
+        },
+        -- ruff auto-discovers pyproject.toml config walking up from the file
+      })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "python", "go" },
+        callback = function(ev)
+          vim.keymap.set("n", "<localleader>b", function()
+            require("conform").format({ bufnr = ev.buf })
+          end, { buffer = ev.buf, desc = "Format buffer" })
+        end,
+      })
+    end
+  },
   { "nvim-lualine/lualine.nvim",
     config = function()
       local function venv()
