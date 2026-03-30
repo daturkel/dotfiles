@@ -41,3 +41,7 @@ require("mason-lspconfig").setup({
 })
 
 vim.diagnostic.config({ virtual_text = false, signs = false })
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, { border = "rounded" }
+)
