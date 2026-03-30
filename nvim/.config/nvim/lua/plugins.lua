@@ -64,13 +64,12 @@ require("lazy").setup({
     end
   },
   { "pacha/vem-dark", priority = 1000 },
-  { "neoclide/coc.nvim", branch = "release" },
-  -- LSP (active after CoC is removed in a later step)
+  -- LSP
   { "williamboman/mason.nvim" },
   { "williamboman/mason-lspconfig.nvim" },
   { "neovim/nvim-lspconfig" },
   { "ray-x/lsp_signature.nvim" },
-  -- completion (active after CoC is removed in a later step)
+  -- completion
   { "hrsh7th/nvim-cmp" },
   { "hrsh7th/cmp-nvim-lsp" },
   { "hrsh7th/cmp-buffer" },
@@ -87,6 +86,5 @@ require("lazy").setup({
   },
   { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-  { "fannheyward/telescope-coc.nvim" },
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 })

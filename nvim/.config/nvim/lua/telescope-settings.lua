@@ -33,10 +33,6 @@ require("telescope").setup({
     },
   },
   extensions = {
-    coc = {
-      theme = 'ivy',
-      prefer_locations = true, -- always use Telescope locations to preview definitions/declarations/implementations etc
-    },
     fzf = {
       fuzzy = true,                    -- false will only do exact matching
       override_generic_sorter = true,  -- override the generic sorter
@@ -45,7 +41,6 @@ require("telescope").setup({
     }
   },
 })
-require('telescope').load_extension('coc')
 require('telescope').load_extension('fzf')
 
 local builtin = require('telescope.builtin')
@@ -56,6 +51,6 @@ vim.keymap.set('n', '<localleader>m', builtin.buffers, { desc = "Buffers", silen
 vim.keymap.set('n', '<localleader>r', builtin.live_grep, { desc = "Grep", silent = true})
 vim.keymap.set('n', '<localleader>h', builtin.oldfiles, { desc = "Recent files", silent = true})
 vim.keymap.set('n', '<localleader>t', ':Telescope builtin previewer=false<cr>', { desc = "Telescope", silent = true})
-vim.keymap.set('n', '<localleader>d', ':Telescope coc diagnostics<cr>', { desc = "Diagnostics", silent = true})
-vim.keymap.set('n', '<localleader>s', ':Telescope coc document_symbols<cr>', { desc = "Symbols", silent = true})
-vim.keymap.set('n', '<localleader>S', ':Telescope coc workspace_symbols<cr>', { desc = "Workspace symbols", silent = true})
+vim.keymap.set('n', '<localleader>d', builtin.diagnostics, { desc = "Diagnostics", silent = true })
+vim.keymap.set('n', '<localleader>s', builtin.lsp_document_symbols, { desc = "Symbols", silent = true })
+vim.keymap.set('n', '<localleader>S', builtin.lsp_workspace_symbols, { desc = "Workspace symbols", silent = true })

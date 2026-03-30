@@ -1,7 +1,8 @@
 vim.cmd([[
-" disable vim-go :GoDef short cut (gd)
-" this is handled by LanguageClient [LC]
+" disable vim-go :GoDef short cut (gd) - handled by native LSP
 let g:go_def_mapping_enabled = 0
+" disable vim-go's gopls - handled by mason-lspconfig
+let g:go_gopls_enabled = 0
 
 autocmd FileType go map <localleader>b <Plug>(go-fmt)
 
