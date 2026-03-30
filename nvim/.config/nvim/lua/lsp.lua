@@ -41,8 +41,8 @@ require("mason-lspconfig").setup({
 
 vim.diagnostic.config({ virtual_text = false, signs = false })
 
-vim.keymap.set("n", "[g", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
-vim.keymap.set("n", "]g", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+vim.keymap.set("n", "[g", function() vim.diagnostic.jump({ count = -1 }) end, { desc = "Previous diagnostic" })
+vim.keymap.set("n", "]g", function() vim.diagnostic.jump({ count = 1 }) end, { desc = "Next diagnostic" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic" })
 
 local _hover = vim.lsp.buf.hover
