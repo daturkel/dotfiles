@@ -1,58 +1,43 @@
--- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
--- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  local opts = { noremap = true, silent = true, buffer = bufnr }
+  local e = function(desc) return vim.tbl_extend("force", opts, { desc = desc }) end
 
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+  vim.keymap.set("n", "gd",         vim.lsp.buf.definition,    e("Go to definition"))
+  vim.keymap.set("n", "gD",         vim.lsp.buf.declaration,   e("Go to declaration"))
+  vim.keymap.set("n", "gr",         vim.lsp.buf.references,    e("References"))
+  vim.keymap.set("n", "gi",         vim.lsp.buf.implementation, opts)
+  vim.keymap.set("n", "K",          vim.lsp.buf.hover,         opts)
+  vim.keymap.set("n", "<leader>r",  vim.lsp.buf.rename,        e("Rename"))
+  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action,   e("Code action"))
+  vim.keymap.set("n", "<leader>o",  function()
+    require("telescope.builtin").lsp_document_symbols()
+  end, e("Symbols"))
+  vim.keymap.set("n", "[g", vim.diagnostic.goto_prev, opts)
+  vim.keymap.set("n", "]g", vim.diagnostic.goto_next, opts)
 end
 
--- Code signature assistance; nvim-cmp has a source for this but it doesn't work well
-require("lsp_signature").setup({
-    toggle_key = "<C-s>",
-    hint_enable = false
+require("lsp_signature").setup({ toggle_key = "<C-s>", hint_enable = false })
+
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = { "pyright", "gopls", "jsonls", "yamlls" },
+})
+require("mason-lspconfig").setup_handlers({
+  function(server_name)
+    require("lspconfig")[server_name].setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
+    })
+  end,
+  ["gopls"] = function()
+    require("lspconfig").gopls.setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
+      settings = { gopls = { usePlaceholders = true } },
+    })
+  end,
 })
 
-local lsp_flags = {
-  -- This is the default in Nvim 0.7+
-  debounce_text_changes = 150,
-}
-require('lspconfig').pylsp.setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-}
-
--- no "virtual text"
-vim.diagnostic.config({
-    virtual_text = false,
-    signs = false
-})
+vim.diagnostic.config({ virtual_text = false, signs = false })

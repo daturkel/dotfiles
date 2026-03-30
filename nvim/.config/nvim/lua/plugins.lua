@@ -65,6 +65,11 @@ require("lazy").setup({
   },
   { "pacha/vem-dark", priority = 1000 },
   { "neoclide/coc.nvim", branch = "release" },
+  -- LSP (active after CoC is removed in a later step)
+  { "williamboman/mason.nvim" },
+  { "williamboman/mason-lspconfig.nvim" },
+  { "neovim/nvim-lspconfig" },
+  { "ray-x/lsp_signature.nvim" },
   { "asiryk/auto-hlsearch.nvim", config = function()
       require("auto-hlsearch").setup()
     end
