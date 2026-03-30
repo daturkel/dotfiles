@@ -26,7 +26,7 @@ require("lazy").setup({
       end
       require("lualine").setup({
         options = {
-          theme = "auto",
+          theme = "wombat",
           icons_enabled = false,
           section_separators = "",
           component_separators = "|",
@@ -36,7 +36,7 @@ require("lazy").setup({
           lualine_b = { { "filename", symbols = { modified = " -", readonly = " RO" } } },
           lualine_c = { "FugitiveHead" },
           lualine_x = { "filetype", venv },
-          lualine_y = { "progress" },
+          lualine_y = { "percent" },
           lualine_z = {},
         },
         inactive_sections = {
@@ -44,7 +44,7 @@ require("lazy").setup({
           lualine_b = { { "filename", symbols = { modified = " -", readonly = " RO" } } },
           lualine_c = { "FugitiveHead" },
           lualine_x = { "filetype" },
-          lualine_y = { "progress" },
+          lualine_y = { "percent" },
           lualine_z = {},
         },
       })
