@@ -6,7 +6,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  { "tpope/vim-commentary" },
+  { "numToStr/Comment.nvim", config = function() require("Comment").setup() end },
   { "tpope/vim-repeat" },
   { "svermeulen/vim-cutlass" },
   { "cespare/vim-toml" },
