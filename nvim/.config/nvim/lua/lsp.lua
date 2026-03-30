@@ -43,6 +43,7 @@ require("mason-lspconfig").setup({
 vim.diagnostic.config({ virtual_text = false, signs = false })
 
 vim.o.winborder = "rounded"
+local _hover = vim.lsp.buf.hover
 vim.lsp.buf.hover = function()
-  vim.lsp.buf.hover({ max_height = 20, max_width = 80 })
+  _hover({ max_height = 20, max_width = 80 })
 end
