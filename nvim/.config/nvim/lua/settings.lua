@@ -1,108 +1,125 @@
 vim.g.maplocalleader = ','
 vim.g.mapleader = ' '
 
+-- python interpreter paths (substituted by deploy script)
+vim.g.python_host_prog = '${py2_loc}'
+vim.g.python3_host_prog = '${py3_loc}'
+
 -- don't show partial commands in command bar
 vim.opt.showcmd = false
 
-vim.cmd([[
-" tell vim where to find python (can't use ~/ alias here for some reason)
-let g:python_host_prog='${py2_loc}'
-let g:python3_host_prog='${py3_loc}'
+-- ── Behavior ──────────────────────────────────────────────────────────────────
 
-set signcolumn=number
+vim.opt.modeline = false        -- disable dangerous modeline
+vim.opt.scrolloff = 5           -- scroll padding
+vim.opt.linebreak = true        -- break lines at spaces
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true        -- tabs are spaces
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.clipboard = "unnamedplus"
+vim.opt.mouse = "a"
+vim.opt.history = 700
+vim.opt.ignorecase = true
+vim.opt.smartcase = true        -- case sensitive once an upper case letter is used
+vim.opt.formatoptions:append("or")  -- automatic comment continuation
+vim.opt.wildmode = "full"
+vim.opt.splitbelow = true
+vim.opt.signcolumn = "number"
+vim.opt.updatetime = 150
+vim.opt.shortmess:append("c")   -- don't show completion menu messages
+vim.opt.conceallevel = 0
 
-"" behavior
-" disable dangerous modeline
-set nomodeline
-" scroll padding 5 lines
-set so=5
-" scroll to next row for wrapped lines
-nnoremap j gj
-nnoremap k gk
-" break lines at spaces
-set linebreak
-" >> and << move text 4 spaces
-set shiftwidth=4
-" tabs are just spaces 
-set expandtab
-" tabs are 4 columns wide
-set tabstop=4
-" but html and css should be two spaces
-autocmd Filetype html setlocal ts=2 sw=2 sts=2
-autocmd Filetype markdown setlocal ts=2 sw=2 sts=2
-autocmd Filetype css setlocal ts=2 sw=2 sts=2
-autocmd Filetype scss setlocal ts=2 sw=2 sts=2
-autocmd Filetype htmldjango setlocal ts=2 sw=2 sts=2
-autocmd Filetype jinja setlocal ts=2 sw=2 sts=2
-autocmd Filetype lua setlocal ts=2 sw=2 sts=2
-" pressing o continues bulleted list in markdown
-autocmd Filetype markdown setlocal formatoptions+=o
-" pressing tab in insert mode is 4 spaces
-set softtabstop=4
-" integrate OS and vim clipboard
-set clipboard=unnamedplus
-" enable mouse
-set mouse=a
-" 700 lines of history
-set history=700
-" don't be case sensitive when searching
-set ignorecase
-" but do be case sensitive once an upper case letter is used
-set smartcase
-" automatic comment continuation
-set formatoptions+=or
-" return to last edit position when opening files
-autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-" strip trailing whitespace for python and sql
-autocmd FileType py,sql autocmd BufWritePre <buffer> %s/\s\+$//e
-" wildmenu with tab; fullmode
-set wildchar=<Tab> wildmode=full
-" horizontal splits below
-set splitbelow
-" yaml
-au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+-- ── Appearance ────────────────────────────────────────────────────────────────
 
-"" appearance
-" line numbers
-set number
-" highlight current line
-set cursorline
-" set colorscheme
-set termguicolors
-" show matching brackets
-set showmatch
+vim.opt.number = true
+vim.opt.cursorline = true
+vim.opt.termguicolors = true
+vim.opt.showmatch = true        -- show matching brackets
 
-"" terminal
-" escape leaves terminal mode, also leaves fzf
-if has("nvim")
-  au TermOpen * tnoremap <Esc> <c-\><c-n>
-  au FileType fzf tunmap <Esc>
-endif
-" enter insert mode when entering terminal
-autocmd BufWinEnter,WinEnter term://* startinsert
-autocmd BufLeave term://* stopinsert
-" no spellcheck in terminal please!
-au TermOpen * setlocal nospell
+-- ── Netrw ─────────────────────────────────────────────────────────────────────
 
-set conceallevel=0
+vim.g.netrw_liststyle = 3       -- tree mode
+vim.g.netrw_banner = 0
 
-" create a directory on save if it doesn't exist already
-" https://vi.stackexchange.com/questions/678/how-do-i-save-a-file-in-a-directory-that-does-not-yet-exist
-augroup Mkdir
-  autocmd!
-  autocmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
-augroup END
-" Better netrw settings
-"" Tree mode
-let g:netrw_liststyle=3
-"" hide the banner
-let g:netrw_banner = 0
-" faster updatetime for cursorhold
-set updatetime=150
-" don't show completion menu messages
-set shortmess+=c
-]])
+-- ── Filetype-specific tab widths ──────────────────────────────────────────────
+
+local tw = vim.api.nvim_create_augroup("TabWidth", { clear = true })
+for _, ft in ipairs({ "html", "markdown", "css", "scss", "htmldjango", "jinja", "lua" }) do
+  vim.api.nvim_create_autocmd("FileType", {
+    group = tw,
+    pattern = ft,
+    callback = function()
+      vim.opt_local.tabstop = 2
+      vim.opt_local.shiftwidth = 2
+      vim.opt_local.softtabstop = 2
+    end,
+  })
+end
+
+-- pressing o continues bulleted list in markdown
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function() vim.opt_local.formatoptions:append("o") end,
+})
+
+-- yaml
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
+  pattern = { "*.yaml", "*.yml" },
+  callback = function()
+    vim.opt_local.filetype = "yaml"
+    vim.opt_local.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.softtabstop = 2
+    vim.opt_local.expandtab = true
+  end,
+})
+
+-- strip trailing whitespace for python and sql on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.py", "*.sql" },
+  callback = function() vim.cmd("%s/\\s\\+$//e") end,
+})
+
+-- return to last edit position when opening files
+vim.api.nvim_create_autocmd("BufReadPost", {
+  callback = function()
+    local mark = vim.fn.line("'\"")
+    if mark > 1 and mark <= vim.fn.line("$") then
+      vim.cmd("normal! g`\"")
+    end
+  end,
+})
+
+-- create parent directories on save if they don't exist
+vim.api.nvim_create_autocmd("BufWritePre", {
+  callback = function(ev)
+    vim.fn.mkdir(vim.fn.fnamemodify(ev.match, ":p:h"), "p")
+  end,
+})
+
+-- ── Terminal ──────────────────────────────────────────────────────────────────
+
+vim.api.nvim_create_autocmd("TermOpen", {
+  callback = function()
+    vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { buffer = true })
+    vim.opt_local.spell = false
+  end,
+})
+
+-- fzf overrides the Esc mapping
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "fzf",
+  callback = function() vim.keymap.del("t", "<Esc>", { buffer = true }) end,
+})
+
+vim.api.nvim_create_autocmd({ "BufWinEnter", "WinEnter" }, {
+  pattern = "term://*",
+  callback = function() vim.cmd("startinsert") end,
+})
+
+vim.api.nvim_create_autocmd("BufLeave", {
+  pattern = "term://*",
+  callback = function() vim.cmd("stopinsert") end,
+})
+

@@ -1,3 +1,7 @@
+-- scroll by visual lines for wrapped content
+vim.keymap.set('n', 'j', 'gj')
+vim.keymap.set('n', 'k', 'gk')
+
 -- use `m` as a 'cut' function
 vim.keymap.set({'n', 'x'},'m','d')
 vim.keymap.set('n', 'mm', 'dd')
