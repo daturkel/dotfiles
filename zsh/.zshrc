@@ -182,6 +182,26 @@ bindkey '^[p' plans-title
 
 # ── Aliases ───────────────────────────────────────────────────────────────────
 
+alias cheatsheet='cat <<EOF
+FZF
+  ctrl-t    files
+  alt-c     cd
+  ctrl-r    history
+  ctrl-l    live rg search (enter: insert, ctrl-e: edit)
+  ctrl-p    search claude plans by content
+  alt-p     search claude plans by filename
+
+Git
+  gst       git status
+  ga        git add
+  gc        git checkout
+  gs        git switch
+  gl        git log --oneline
+  gd        diff between two refs: gd <from> <to> [path]
+  cr        cd to repo root
+EOF
+'
+
 alias vim='nvim'
 alias mkdir='mkdir -pv'
 alias reload='source ~/.zshrc'
