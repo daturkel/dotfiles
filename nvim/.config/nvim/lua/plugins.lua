@@ -25,10 +25,15 @@ require("lazy").setup({
         return v and v:match("[^\\/]+$") or ""
       end
       require("lualine").setup({
-        options = { theme = "auto", icons_enabled = false },
+        options = {
+          theme = "auto",
+          icons_enabled = false,
+          section_separators = "",
+          component_separators = "|",
+        },
         sections = {
           lualine_a = { "mode" },
-          lualine_b = { "filename" },
+          lualine_b = { { "filename", symbols = { modified = " -", readonly = " RO" } } },
           lualine_c = { "FugitiveHead" },
           lualine_x = { "filetype", venv },
           lualine_y = { "progress" },
@@ -36,7 +41,7 @@ require("lazy").setup({
         },
         inactive_sections = {
           lualine_a = {},
-          lualine_b = { "filename" },
+          lualine_b = { { "filename", symbols = { modified = " -", readonly = " RO" } } },
           lualine_c = { "FugitiveHead" },
           lualine_x = { "filetype" },
           lualine_y = { "progress" },
