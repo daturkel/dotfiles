@@ -14,8 +14,6 @@ let g:ascii = [
 let g:startify_custom_header =
             \ map(g:ascii, '"   ".v:val')
 let g:startify_lists = [
-      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-      \ { 'type': 'files',     'header': ['   Recent']            },
+      \ { 'type': 'files', 'header': ['   Recent'] },
       \ ]
-let g:startify_bookmarks = [ {'w': '~/Documents/wiki/index.md'} ]
 ]])
