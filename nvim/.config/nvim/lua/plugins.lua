@@ -11,11 +11,54 @@ require("lazy").setup({
   { "svermeulen/vim-cutlass" },
   { "cespare/vim-toml" },
   { "godlygeek/tabular" },
-  { "preservim/vim-markdown" },
+  { "preservim/vim-markdown", config = function()
+      vim.g.vim_markdown_folding_disabled = 1
+      vim.g.vim_markdown_toc_autofit = 1
+      vim.g.vim_markdown_conceal_code_blocks = 0
+      vim.g.vim_markdown_frontmatter = 1
+      vim.g.vim_markdown_new_list_item_indent = 0
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "markdown",
+        callback = function()
+          vim.keymap.set("n", "<localleader>j", ":Toch<cr>", { silent = true, desc = "TOC" })
+        end,
+      })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "qf",
+        callback = function()
+          vim.keymap.set("n", "<Space>", "<cr>:only<cr>", { buffer = true })
+        end,
+      })
+    end
+  },
   { "tpope/vim-fugitive" },
-  { "fatih/vim-go" },
-  { "lervag/wiki.vim" },
-  { "lervag/vimtex", ft = "tex" },
+  { "fatih/vim-go", config = function()
+      vim.g.go_def_mapping_enabled = 0     -- gd handled by native LSP
+      vim.g.go_gopls_enabled = 0           -- gopls handled by mason-lspconfig
+      vim.g.go_doc_popup_window = 1
+      vim.g.go_highlight_functions = 1
+      vim.g.go_highlight_methods = 1
+      vim.g.go_highlight_structs = 1
+      vim.g.go_highlight_interfaces = 1
+      vim.g.go_highlight_operators = 1
+      vim.g.go_highlight_build_constraints = 1
+      vim.g.go_def_mode = "gopls"
+      vim.g.go_info_mode = "gopls"
+      vim.g.go_auto_type_info = 1
+      vim.g.go_echo_go_info = 0
+    end
+  },
+  { "lervag/wiki.vim", enabled = false },
+  { "lervag/vimtex", ft = "tex", config = function()
+      vim.g.vimtex_compiler_progname = "nvr"
+      vim.g.vimtex_view_method = "skim"
+      vim.g.vimtex_matchparen_enabled = 0
+      vim.g.vimtex_compiler_latexmk = {
+        options = { "-pdf", "-shell-escape", "-verbose", "-file-line-error", "-synctex=1", "-interaction=nonstopmode" }
+      }
+      vim.g.tex_flavor = "latex"
+    end
+  },
   { "mhinz/vim-startify" },
   { "stevearc/conform.nvim",
     config = function()
@@ -82,7 +125,11 @@ require("lazy").setup({
       vim.keymap.set("n", "<C-i>", ":IBLToggle<CR>", { silent = true, desc = "Toggle indent guides" })
     end
   },
-  { "pacha/vem-dark", priority = 1000 },
+  { "pacha/vem-dark", priority = 1000, config = function()
+      vim.cmd("colorscheme vem-dark")
+      vim.g.vem_colors_italic = 1
+    end
+  },
   -- LSP
   { "williamboman/mason.nvim" },
   { "williamboman/mason-lspconfig.nvim" },
