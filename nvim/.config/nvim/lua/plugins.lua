@@ -18,7 +18,33 @@ require("lazy").setup({
   { "lervag/vimtex", ft = "tex" },
   { "mhinz/vim-startify" },
   { "psf/black", ft = "python" },
-  { "itchyny/lightline.vim" },
+  { "nvim-lualine/lualine.nvim",
+    config = function()
+      local function venv()
+        local v = os.getenv("VIRTUAL_ENV")
+        return v and v:match("[^\\/]+$") or ""
+      end
+      require("lualine").setup({
+        options = { theme = "auto", icons_enabled = false },
+        sections = {
+          lualine_a = { "mode" },
+          lualine_b = { "filename" },
+          lualine_c = { "FugitiveHead" },
+          lualine_x = { "filetype", venv },
+          lualine_y = { "progress" },
+          lualine_z = {},
+        },
+        inactive_sections = {
+          lualine_a = {},
+          lualine_b = { "filename" },
+          lualine_c = { "FugitiveHead" },
+          lualine_x = { "filetype" },
+          lualine_y = { "progress" },
+          lualine_z = {},
+        },
+      })
+    end
+  },
   { "nathanaelkane/vim-indent-guides" },
   { "pacha/vem-dark", priority = 1000 },
   { "neoclide/coc.nvim", branch = "release" },

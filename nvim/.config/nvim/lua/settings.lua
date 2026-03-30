@@ -26,6 +26,7 @@ vim.opt.signcolumn = "number"
 vim.opt.updatetime = 150
 vim.opt.shortmess:append("c")   -- don't show completion menu messages
 vim.opt.conceallevel = 0
+vim.opt.showmode = false        -- statusline shows mode instead
 vim.opt.undofile = true         -- persistent undo across sessions
 
 -- ── Appearance ────────────────────────────────────────────────────────────────
