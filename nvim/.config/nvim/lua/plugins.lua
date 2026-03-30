@@ -105,15 +105,9 @@ require("lazy").setup({
   },
   { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
   { "nvim-treesitter/nvim-treesitter",
-    lazy = false,
-    build = ":TSUpdate",
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = { "python", "go", "lua", "bash", "json", "yaml", "markdown", "markdown_inline" },
-        highlight = { enable = true },
-        indent = { enable = true },
-      })
-    end
+    build = function()
+      require("nvim-treesitter").install({ "python", "go", "lua", "bash", "json", "yaml", "markdown", "markdown_inline" }):wait()
+    end,
   },
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 })
