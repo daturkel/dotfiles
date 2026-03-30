@@ -134,6 +134,57 @@ alias gl='git log --oneline'
 alias v='source ./.venv/bin/activate'
 alias vv='source ~/.venv/bin/activate'
 $aliases
+alias reload='source ~/.zshrc'
+alias plans='cd ~/.claude/plans'
+
+# rg through claude plan files with fzf
+plans-search() {
+  local PLANS_DIR="$HOME/.claude/plans"
+  local RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
+
+  local selected=$(
+    fzf --ansi \
+        --disabled \
+        --bind "start:reload:$RG_PREFIX '' $PLANS_DIR | sed \"s|$PLANS_DIR/||\"" \
+        --bind "change:reload:sleep 0.1; $RG_PREFIX {q} $PLANS_DIR | sed \"s|$PLANS_DIR/||\" || true" \
+        --bind "enter:accept" \
+        --bind "ctrl-e:execute($EDITOR $PLANS_DIR/{1} +{2})+abort" \
+        --delimiter : \
+        --preview "bat -p --color=always $PLANS_DIR/{1} --highlight-line {2}" \
+        --preview-window 'down:60%:+{2}+3/3' \
+        --header 'Enter: insert path | Ctrl-E: open in editor'
+  )
+
+  if [[ -n "$selected" ]]; then
+    LBUFFER="${LBUFFER}$PLANS_DIR/$(echo "$selected" | cut -d: -f1)"
+  fi
+
+  zle redisplay
+}
+zle -N plans-search
+bindkey -r '^p'
+bindkey '^p' plans-search
+
+# browse claude plan files by filename with fzf
+plans-title() {
+  local PLANS_DIR="$HOME/.claude/plans"
+
+  local selected=$(
+    ls "$PLANS_DIR" | fzf \
+        --preview "bat -p --color=always $PLANS_DIR/{}" \
+        --preview-window 'down:60%' \
+        --header 'Enter: insert path | Ctrl-E: open in editor' \
+        --bind "ctrl-e:execute($EDITOR $PLANS_DIR/{})+abort"
+  )
+
+  if [[ -n "$selected" ]]; then
+    LBUFFER="${LBUFFER}$PLANS_DIR/$selected"
+  fi
+
+  zle redisplay
+}
+zle -N plans-title
+bindkey '^[p' plans-title
 
 # go
 export GOPATH=$HOME/go
