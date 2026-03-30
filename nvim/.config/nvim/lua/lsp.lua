@@ -23,7 +23,7 @@ require("lsp_signature").setup({ toggle_key = "<C-s>", hint_enable = false })
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "pyright", "gopls", "jsonls", "yamlls", "ruff" },
+  ensure_installed = { "pyright", "gopls", "jsonls", "yamlls" },
   handlers = {
     function(server_name)
       require("lspconfig")[server_name].setup({
