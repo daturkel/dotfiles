@@ -15,8 +15,6 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "<leader>o",  function()
     require("telescope.builtin").lsp_document_symbols()
   end, e("Symbols"))
-  vim.keymap.set("n", "[g", vim.diagnostic.goto_prev, opts)
-  vim.keymap.set("n", "]g", vim.diagnostic.goto_next, opts)
 end
 
 require("lsp_signature").setup({ toggle_key = "<C-s>", hint_enable = false })
@@ -42,6 +40,10 @@ require("mason-lspconfig").setup({
 })
 
 vim.diagnostic.config({ virtual_text = false, signs = false })
+
+vim.keymap.set("n", "[g", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
+vim.keymap.set("n", "]g", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic" })
 
 local _hover = vim.lsp.buf.hover
 vim.lsp.buf.hover = function()
