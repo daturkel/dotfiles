@@ -23,21 +23,21 @@ require("lsp_signature").setup({ toggle_key = "<C-s>", hint_enable = false })
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = { "pyright", "gopls", "jsonls", "yamlls" },
-})
-require("mason-lspconfig").setup_handlers({
-  function(server_name)
-    require("lspconfig")[server_name].setup({
-      on_attach = on_attach,
-      capabilities = capabilities,
-    })
-  end,
-  ["gopls"] = function()
-    require("lspconfig").gopls.setup({
-      on_attach = on_attach,
-      capabilities = capabilities,
-      settings = { gopls = { usePlaceholders = true } },
-    })
-  end,
+  handlers = {
+    function(server_name)
+      require("lspconfig")[server_name].setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+      })
+    end,
+    ["gopls"] = function()
+      require("lspconfig").gopls.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+        settings = { gopls = { usePlaceholders = true } },
+      })
+    end,
+  },
 })
 
 vim.diagnostic.config({ virtual_text = false, signs = false })
