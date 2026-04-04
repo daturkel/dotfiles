@@ -13,8 +13,14 @@ vim.keymap.set({'n', 'v', 'o'}, 'Q', 'gq', {remap = true})
 -- we use C-I for indent guides, so let's use C-P for go to next jump
 vim.keymap.set("n", "<C-P>", "<C-I>")
 
--- enter clears highlights
+-- enter clears highlights (except in quickfix)
 vim.keymap.set("n", "<CR>", ":noh<CR>")
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "qf",
+  callback = function()
+    vim.keymap.set("n", "<CR>", "<CR>", { buffer = true, noremap = true })
+  end,
+})
 
 -- better split management
 vim.keymap.set('n', '<C-J>', '<C-W><C-J>')

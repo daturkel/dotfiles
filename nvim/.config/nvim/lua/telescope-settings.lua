@@ -32,6 +32,11 @@ require("telescope").setup({
       },
     },
   },
+  pickers = {
+    colorscheme = {
+      enable_preview = true,
+    },
+  },
   extensions = {
     fzf = {
       fuzzy = true,                    -- false will only do exact matching

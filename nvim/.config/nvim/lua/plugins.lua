@@ -6,30 +6,43 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  { "numToStr/Comment.nvim", lazy = false, config = function() require("Comment").setup() end },
   { "tpope/vim-repeat" },
   { "svermeulen/vim-cutlass" },
-  { "cespare/vim-toml" },
-  { "godlygeek/tabular" },
-  { "preservim/vim-markdown", config = function()
-      vim.g.vim_markdown_folding_disabled = 1
-      vim.g.vim_markdown_toc_autofit = 1
-      vim.g.vim_markdown_conceal_code_blocks = 0
-      vim.g.vim_markdown_frontmatter = 1
-      vim.g.vim_markdown_new_list_item_indent = 0
+  { "OXY2DEV/markview.nvim",
+    lazy = false,
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("markview").setup({
+        preview = {
+          modes = { "n", "c" },
+        },
+        markdown = {
+          headings = {
+            enable = true,
+            shift_width = 0,
+            heading_1 = { style = "label", sign = "", icon = "# ",  padding_right = " ", hl = "MarkviewHeading1" },
+            heading_2 = { style = "label", sign = "", icon = "## ", padding_right = " ", hl = "MarkviewHeading2" },
+            heading_3 = { style = "label", icon = "### ", padding_right = " ", hl = "MarkviewHeading3" },
+            heading_4 = { style = "label", icon = "#### ", padding_right = " ", hl = "MarkviewHeading4" },
+            heading_5 = { style = "label", icon = "##### ", padding_right = " ", hl = "MarkviewHeading5" },
+            heading_6 = { style = "label", icon = "###### ", padding_right = " ", hl = "MarkviewHeading6" },
+          },
+          code_blocks = { sign = false },
+          list_items = {
+            shift_width = 2,
+            marker_minus = { text = "•" },
+            marker_plus  = { text = "•" },
+            marker_star  = { text = "•" },
+          },
+        },
+      })
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "markdown",
         callback = function()
-          vim.keymap.set("n", "<localleader>j", ":Toch<cr>", { silent = true, desc = "TOC" })
+          vim.keymap.set("n", "<localleader>p", "<cmd>Markview Toggle<cr>", { buffer = true, desc = "Toggle markview" })
         end,
       })
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "qf",
-        callback = function()
-          vim.keymap.set("n", "<Space>", "<cr>:only<cr>", { buffer = true })
-        end,
-      })
-    end
+    end,
   },
   { "tpope/vim-fugitive" },
   { "fatih/vim-go", config = function()
@@ -86,6 +99,12 @@ require("lazy").setup({
         local v = os.getenv("VIRTUAL_ENV")
         return v and v:match("[^\\/]+$") or ""
       end
+      local function git_dirty()
+        local file = vim.fn.expand("%:p")
+        if file == "" then return "" end
+        local result = vim.fn.system("git status --porcelain " .. vim.fn.shellescape(file) .. " 2>/dev/null")
+        return (result ~= "" and vim.v.shell_error == 0) and "\u{f044}" or ""
+      end
       require("lualine").setup({
         options = {
           theme = "wombat",
@@ -96,7 +115,7 @@ require("lazy").setup({
         sections = {
           lualine_a = { "mode" },
           lualine_b = { { "filename", symbols = { modified = " -", readonly = " RO" } } },
-          lualine_c = { "FugitiveHead" },
+          lualine_c = { { "FugitiveHead", separator = "" }, { git_dirty, padding = { left = 0, right = 1 } } },
           lualine_x = { "filetype", venv },
           lualine_y = { "percent" },
           lualine_z = {},
@@ -125,11 +144,13 @@ require("lazy").setup({
       vim.keymap.set("n", "<C-i>", ":IBLToggle<CR>", { silent = true, desc = "Toggle indent guides" })
     end
   },
-  { "pacha/vem-dark", priority = 1000, config = function()
-      vim.cmd("colorscheme vem-dark")
-      vim.g.vem_colors_italic = 1
+  { "ViViDboarder/wombat.nvim", priority = 1000, dependencies = { "rktjmp/lush.nvim" }, config = function()
+      vim.cmd("colorscheme wombat_lush")
     end
   },
+  { "Mofiqul/vscode.nvim", lazy = true },
+  { "reobin/olive-crt.nvim", lazy = true },
+  { "WTFox/jellybeans.nvim", lazy = true },
   -- LSP
   { "williamboman/mason.nvim" },
   { "williamboman/mason-lspconfig.nvim" },
@@ -153,7 +174,7 @@ require("lazy").setup({
   { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
   { "nvim-treesitter/nvim-treesitter",
     build = function()
-      require("nvim-treesitter").install({ "python", "go", "lua", "bash", "json", "yaml", "markdown", "markdown_inline" }):wait()
+      require("nvim-treesitter").install({ "python", "go", "lua", "bash", "json", "yaml", "toml", "markdown", "markdown_inline" }):wait()
     end,
   },
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
