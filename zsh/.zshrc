@@ -139,8 +139,8 @@ plans-search() {
   local selected=$(
     fzf --ansi \
         --disabled \
-        --bind "start:reload:$RG_PREFIX '' $PLANS_DIR | sed \"s|$PLANS_DIR/||\"" \
-        --bind "change:reload:sleep 0.1; $RG_PREFIX {q} $PLANS_DIR | sed \"s|$PLANS_DIR/||\" || true" \
+        --bind "start:reload:$RG_PREFIX '' $PLANS_DIR --sortr modified | sed \"s|$PLANS_DIR/||\"" \
+        --bind "change:reload:sleep 0.1; $RG_PREFIX {q} $PLANS_DIR --sortr modified | sed \"s|$PLANS_DIR/||\" || true" \
         --bind "enter:accept" \
         --bind "ctrl-e:execute($EDITOR $PLANS_DIR/{1} +{2})+abort" \
         --delimiter : \
@@ -164,7 +164,7 @@ plans-title() {
   local PLANS_DIR="$HOME/.claude/plans"
 
   local selected=$(
-    ls "$PLANS_DIR" | fzf \
+    ls -t "$PLANS_DIR" | fzf \
         --preview "bat -p --color=always $PLANS_DIR/{}" \
         --preview-window 'down:60%' \
         --header 'Enter: insert path | Ctrl-E: open in editor' \
