@@ -6,3 +6,5 @@ p10k_*/*
 nvim_*/*
 test*/*
 .ropeproject/*
+__pycache__/
+.pytest_cache/

@@ -2,9 +2,8 @@
 title = "config.toml"
 
 [settings]
-projects = ['zsh','nvim','p10k']
-files.zsh = ['.zshrc', 'fzf-git.sh']
-files.nvim = ['.config/nvim/lua/settings.lua']
+projects = ['zsh','p10k']
+files.zsh = ['.zshrc']
 
 [profile]
 

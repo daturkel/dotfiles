@@ -1,9 +1,6 @@
 vim.g.maplocalleader = ','
 vim.g.mapleader = ' '
 
--- python interpreter path (substituted by deploy script)
-vim.g.python3_host_prog = '${py3_loc}'
-
 -- don't show partial commands in command bar
 vim.opt.showcmd = false
 

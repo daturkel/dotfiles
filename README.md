@@ -4,12 +4,8 @@
 
 To just copy a folder to home, from the root of ".dotfiles", run `stow {project_name}`, e.g. `stow nvim`.
 
-To create a version of a project with `$foo`/`${foo}` substitutions, run the `deploy` script with arguments `project` and `profile`:
+To create a profile-specific version of a project with `$foo`/`${foo}` substitutions, run `deploy.py` with a profile and optional packages:
 
-`./deploy nvim home`
+`./deploy.py home_new zsh`
 
-or
-
-`./deploy nvim [work,home]`
-
-Then `stow nvim_work`.
+Then `stow zsh_home_new`. Non-templated files in the output are symlinks back to the source.
