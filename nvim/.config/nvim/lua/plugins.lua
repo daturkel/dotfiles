@@ -163,3 +163,9 @@ require("which-key").setup({ plugins = { spelling = { enabled = true } } })
 
 -- parsers are installed async; no-op when already present
 require("nvim-treesitter").install({ "python", "go", "lua", "bash", "json", "yaml", "toml", "markdown", "markdown_inline" })
+
+-- treesitter highlighting isn't automatic for these filetypes; start it explicitly
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "python", "go" },
+  callback = function(ev) pcall(vim.treesitter.start, ev.buf) end,
+})
