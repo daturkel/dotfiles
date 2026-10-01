@@ -10,7 +10,7 @@ Each top-level directory is a **stow package** — its contents mirror the home 
 
 | Directory | Contents |
 |-----------|----------|
-| `nvim/` | Neovim config (`~/.config/nvim/`) — lazy.nvim plugin manager, Lua-based config |
+| `nvim/` | Neovim config (`~/.config/nvim/`) — built-in `vim.pack` plugin manager, Lua-based config |
 | `nvim_home_new/` | Deployed variant of `nvim/` for the `home_new` profile |
 | `zsh/` | Zsh config (`.zshrc`, `fzf-git.sh`) |
 | `zsh_home_new/` | Deployed variant of `zsh/` for the `home_new` profile |
@@ -57,10 +57,9 @@ The files that receive substitution are listed under `[settings].files`:
 ## Neovim Config
 
 - Entry point: `nvim/.config/nvim/init.lua`
-- Plugin manager: [lazy.nvim](https://github.com/folke/lazy.nvim)
+- Plugin manager: built-in `vim.pack` (nvim 0.12+). Revisions are pinned in `nvim-pack-lock.json`; `deploy.py` re-renders the target dir, so copy the lockfile from `~/.config/nvim` back into `nvim/.config/nvim/` after updates
 - Plugins defined in: `lua/plugins.lua`
 - Key mappings: `lua/mappings.lua`
 - LSP setup: `lua/lsp.lua`
 - Completion: `lua/completion.lua`
 - Colorscheme: `colors/vombato.vim` (Wombat-based)
-- Snippets: `UltiSnips/` (tex, python)

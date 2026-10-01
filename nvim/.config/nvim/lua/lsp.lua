@@ -21,21 +21,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 require("lsp_signature").setup({ toggle_key = "<C-s>", hint_enable = false, handler_opts = { border = "none" } })
 
+-- nvim-lspconfig supplies the per-server defaults (lsp/*.lua); mason-lspconfig installs
+-- the servers and calls vim.lsp.enable() for each one
+vim.lsp.config("*", { capabilities = capabilities })
+vim.lsp.config("gopls", { settings = { gopls = { usePlaceholders = true } } })
+
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "pyright", "gopls", "jsonls", "yamlls", "marksman" },
-  handlers = {
-    function(server_name)
-      require("lspconfig")[server_name].setup({ capabilities = capabilities })
-    end,
-    ["gopls"] = function()
-      require("lspconfig").gopls.setup({
-        capabilities = capabilities,
-        settings = { gopls = { usePlaceholders = true } },
-      })
-    end,
-  },
+  ensure_installed = { "pyright", "jsonls", "yamlls", "marksman" },
+  automatic_enable = true,
 })
+-- gopls comes from `go install golang.org/x/tools/gopls@latest` (~/go/bin), not mason:
+-- mason's registry currently pins a gopls version that `go install` rejects
+vim.lsp.enable("gopls")
 
 vim.diagnostic.config({
   virtual_text = false,
