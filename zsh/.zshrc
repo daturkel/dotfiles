@@ -17,6 +17,7 @@ export EDITOR="/opt/homebrew/bin/nvim"
 export VISUAL="/opt/homebrew/bin/nvim"
 export GOPATH=$HOME/go
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
+export GH_TELEMETRY=false
 
 # ── History ───────────────────────────────────────────────────────────────────
 
