@@ -1,5 +1,3 @@
-export ZSH=$HOME/.zsh
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -16,7 +14,7 @@ export PATH=$PATH:$zsh_path
 export EDITOR="/opt/homebrew/bin/nvim"
 export VISUAL="/opt/homebrew/bin/nvim"
 export GOPATH=$HOME/go
-export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
+export LIBRARY_PATH="${LIBRARY_PATH:+$LIBRARY_PATH:}/opt/homebrew/opt/openssl/lib"
 export GH_TELEMETRY=false
 
 # ── History ───────────────────────────────────────────────────────────────────
@@ -25,11 +23,8 @@ HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000000
 SAVEHIST=10000000
 HISTORY_IGNORE="(ls|cd|pwd|exit)*"
-HIST_STAMPS="yyyy-mm-dd"
 setopt INC_APPEND_HISTORY_TIME  # write time taken to history after command finishes
-setopt HIST_IGNORE_DUPS         # do not record an event that was just recorded again
-setopt HIST_IGNORE_ALL_DUPS     # delete old event if new event is a duplicate
-setopt HIST_SAVE_NO_DUPS        # do not write a duplicate event to the history file
+setopt HIST_IGNORE_ALL_DUPS     # delete old event if new event is a duplicate (implies IGNORE_DUPS / SAVE_NO_DUPS)
 setopt HIST_VERIFY              # do not execute immediately upon history expansion
 setopt HIST_NO_STORE            # don't store history commands
 setopt HIST_REDUCE_BLANKS       # remove superfluous blanks from each command line
@@ -37,11 +32,13 @@ setopt transient_rprompt        # remove the right prompt from anything other th
 
 # ── Completion ────────────────────────────────────────────────────────────────
 
-# uv - completions cached to avoid subprocess cost on every startup
-if [[ ! -f ~/.cache/zsh/completions/_uv ]]; then
+# uv - completions cached to avoid subprocess cost on every startup; regenerated when
+# the uv binary is newer than the cache. Uses the binary directly because `uv` may be a
+# shell function (see ~/.zshrc-extra) that does auth work.
+if (( $+commands[uv] )) && [[ ! -f ~/.cache/zsh/completions/_uv || $commands[uv] -nt ~/.cache/zsh/completions/_uv ]]; then
   mkdir -p ~/.cache/zsh/completions
-  uv generate-shell-completion zsh > ~/.cache/zsh/completions/_uv
-  uvx --generate-shell-completion zsh > ~/.cache/zsh/completions/_uvx
+  $commands[uv] generate-shell-completion zsh > ~/.cache/zsh/completions/_uv
+  $commands[uvx] --generate-shell-completion zsh > ~/.cache/zsh/completions/_uvx
 fi
 fpath=(~/.cache/zsh/completions $fpath)
 

@@ -10,9 +10,9 @@ variables, and every other file is a relative symlink back to the source so
 edits to it take effect without re-deploying.
 
 Usage:
-    ./deploy.py home_new            # all packages in config.toml
-    ./deploy.py home_new zsh p10k   # selected packages
-Then: stow zsh_home_new
+    ./deploy.py home            # all packages in config.toml
+    ./deploy.py home zsh p10k   # selected packages
+Then: stow zsh_home
 """
 
 import argparse

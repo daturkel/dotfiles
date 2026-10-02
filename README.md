@@ -6,6 +6,6 @@ To just copy a folder to home, from the root of ".dotfiles", run `stow {project_
 
 To create a profile-specific version of a project with `$foo`/`${foo}` substitutions, run `deploy.py` with a profile and optional packages:
 
-`./deploy.py home_new zsh`
+`./deploy.py home zsh`
 
-Then `stow zsh_home_new`. Non-templated files in the output are symlinks back to the source.
+Then `stow zsh_home`. Non-templated files in the output are symlinks back to the source.
