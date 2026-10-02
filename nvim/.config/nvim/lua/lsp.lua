@@ -8,18 +8,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     vim.keymap.set("n", "gd",         vim.lsp.buf.definition,     e("Go to definition"))
     vim.keymap.set("n", "gD",         vim.lsp.buf.declaration,    e("Go to declaration"))
-    vim.keymap.set("n", "gr",         require("telescope.builtin").lsp_references, e("References"))
-    vim.keymap.set("n", "gi",         vim.lsp.buf.implementation, opts)
-    vim.keymap.set("n", "K",          vim.lsp.buf.hover,          opts)
-    vim.keymap.set("n", "<leader>r",  vim.lsp.buf.rename,         e("Rename"))
-    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action,    e("Code action"))
-    vim.keymap.set("n", "<leader>o",  function()
-      require("telescope.builtin").lsp_document_symbols()
-    end, e("Symbols"))
+    vim.keymap.set("n", "grr",        require("telescope.builtin").lsp_references, e("References"))
   end,
 })
 
-require("lsp_signature").setup({ toggle_key = "<C-s>", hint_enable = false, handler_opts = { border = "none" } })
+require("lsp_signature").setup({ hint_enable = false, handler_opts = { border = "none" } })
 
 -- nvim-lspconfig supplies the per-server defaults (lsp/*.lua); mason-lspconfig installs
 -- the servers and calls vim.lsp.enable() for each one
@@ -47,8 +40,6 @@ vim.diagnostic.config({
   },
 })
 
-vim.keymap.set("n", "[g", function() vim.diagnostic.jump({ count = -1 }) end, { desc = "Previous diagnostic" })
-vim.keymap.set("n", "]g", function() vim.diagnostic.jump({ count = 1 }) end, { desc = "Next diagnostic" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic" })
 
 local severity_hl = {

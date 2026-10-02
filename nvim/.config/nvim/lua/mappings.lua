@@ -22,12 +22,6 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- better split management
-vim.keymap.set('n', '<C-J>', '<C-W><C-J>')
-vim.keymap.set('n', '<C-K>', '<C-W><C-K>')
-vim.keymap.set('n', '<C-L>', '<C-W><C-L>')
-vim.keymap.set('n', '<C-H>', '<C-W><C-H>')
-
 -- move to the split in the direction shown, or create a new split
 vim.keymap.set('n', '<C-h>', ":call WinMove('h')<cr>", {silent = true})
 vim.keymap.set('n', '<C-j>', ":call WinMove('j')<cr>", {silent = true})
