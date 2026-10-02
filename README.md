@@ -1,11 +1,5 @@
 # Dan's Dotfiles
 
-## How I use this
+Each top-level directory is a [GNU Stow](https://www.gnu.org/software/stow/) package. From the root of `.dotfiles`, run `stow {package}`, e.g. `stow nvim`.
 
-To just copy a folder to home, from the root of ".dotfiles", run `stow {project_name}`, e.g. `stow nvim`.
-
-To create a profile-specific version of a project with `$foo`/`${foo}` substitutions, run `deploy.py` with a profile and optional packages:
-
-`./deploy.py home zsh`
-
-Then `stow zsh_home`. Non-templated files in the output are symlinks back to the source.
+Per-machine settings (exports, extra aliases, work-only config) go in `~/.zshrc.local`, which `.zshrc` sources if present and is not tracked.

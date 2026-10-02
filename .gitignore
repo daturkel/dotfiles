@@ -1,11 +1,3 @@
 .DS_Store
 .netrwhist
-nvim/.config/nvim/plugged/*
-zsh_*/*
-p10k_*/*
-nvim_*/*
-test*/*
 .ropeproject/*
-__pycache__/
-.pytest_cache/
-!tests/*

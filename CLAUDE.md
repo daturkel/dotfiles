@@ -2,7 +2,7 @@
 
 ## Overview
 
-Personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/) and a custom deploy script for profile-based templating.
+Personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/). No templating or deploy step: every package is stowed directly.
 
 ## Structure
 
@@ -12,41 +12,17 @@ Each top-level directory is a **stow package** — its contents mirror the home 
 |-----------|----------|
 | `nvim/` | Neovim config (`~/.config/nvim/`) — built-in `vim.pack` plugin manager, Lua-based config |
 | `zsh/` | Zsh config (`.zshrc`, `fzf-git.sh`) |
-| `zsh_<profile>/` | Generated (gitignored) variant of `zsh/` for a profile; `p10k_<profile>/` likewise |
 | `tmux/` | tmux config (`.tmux.conf`) |
 | `bat/` | bat config and Wombat color theme |
 | `p10k/` | Powerlevel10k prompt config (`.p10k.zsh`) |
 
 ## Deploying
 
-### Simple stow (no templating)
 ```bash
-stow nvim        # symlinks nvim/ contents into ~
-stow tmux
-stow bat
+stow nvim zsh p10k tmux bat
 ```
 
-### Profile-based deploy (with variable substitution)
-Some files use `$variable` / `${variable}` placeholders (e.g., `$zsh_path`, `$aliases`). `deploy.py` builds `<package>_<profile>/` for each package: files listed in `[settings].files` are rendered with the profile's variables, and every other file is a relative symlink back to the source (so edits are live). Only profile variables are substituted; other `$names` (shell vars) are left alone. nvim is not templated — stow it directly.
-
-```bash
-./deploy.py home            # all packages in config.toml
-./deploy.py home zsh        # one package
-
-# Then stow the rendered output
-stow zsh_home
-```
-
-`deploy.py` is a stdlib-only [uv script](https://docs.astral.sh/uv/guides/scripts/) — run via the shebang or `uv run deploy.py`. Tests: `uv run --with pytest pytest tests`.
-
-## Profiles (`config.toml`)
-
-Profiles are defined in `config.toml` under `[profile.<name>]`. Each profile sets variables `zsh_path` and `aliases`. Profiles fall back to `[profile]` defaults for any unset keys.
-
-Current profiles: `home`, `hinge`.
-
-The files that receive substitution are listed under `[settings].files`:
-- `zsh`: `.zshrc`
+Per-machine zsh settings live in an untracked `~/.zshrc.local`, sourced by `.zshrc`.
 
 ## Neovim Config
 

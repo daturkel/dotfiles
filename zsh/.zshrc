@@ -10,10 +10,11 @@ source ~/.powerlevel10k/powerlevel10k.zsh-theme
 
 # ── Environment ───────────────────────────────────────────────────────────────
 
-export PATH=$PATH:$zsh_path
 export EDITOR="/opt/homebrew/bin/nvim"
 export VISUAL="/opt/homebrew/bin/nvim"
 export GOPATH=$HOME/go
+typeset -U path  # dedupe PATH entries
+path+=(~/.local/bin $GOPATH/bin /opt/homebrew/bin)
 export LIBRARY_PATH="${LIBRARY_PATH:+$LIBRARY_PATH:}/opt/homebrew/opt/openssl/lib"
 export GH_TELEMETRY=false
 
@@ -34,7 +35,7 @@ setopt transient_rprompt        # remove the right prompt from anything other th
 
 # uv - completions cached to avoid subprocess cost on every startup; regenerated when
 # the uv binary is newer than the cache. Uses the binary directly because `uv` may be a
-# shell function (see ~/.zshrc-extra) that does auth work.
+# shell function (see ~/.zshrc.local) that does auth work.
 if (( $+commands[uv] )) && [[ ! -f ~/.cache/zsh/completions/_uv || $commands[uv] -nt ~/.cache/zsh/completions/_uv ]]; then
   mkdir -p ~/.cache/zsh/completions
   $commands[uv] generate-shell-completion zsh > ~/.cache/zsh/completions/_uv
@@ -217,7 +218,8 @@ alias gl='git log --oneline'
 alias v='source ./.venv/bin/activate'
 alias vv='source ~/.venv/bin/activate'
 
-$aliases
+# per-machine settings (not tracked in git)
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 # ── Prompt ────────────────────────────────────────────────────────────────────
 
