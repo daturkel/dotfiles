@@ -41,7 +41,7 @@ if (( $+commands[uv] )) && [[ ! -f ~/.cache/zsh/completions/_uv || $commands[uv]
   $commands[uv] generate-shell-completion zsh > ~/.cache/zsh/completions/_uv
   $commands[uvx] --generate-shell-completion zsh > ~/.cache/zsh/completions/_uvx
 fi
-fpath=(~/.cache/zsh/completions $fpath)
+fpath=(~/.cache/zsh/completions ~/.docker/completions $fpath)
 
 # -C skips compaudit security check (saves ~15ms); run compinit without -C occasionally to recheck
 autoload -U compinit; compinit -C
