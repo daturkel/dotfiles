@@ -30,6 +30,7 @@ vim.lsp.enable("gopls")
 
 vim.diagnostic.config({
   virtual_text = false,
+  severity_sort = true,
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "\u{f057}",  --
@@ -48,16 +49,21 @@ local severity_hl = {
   [vim.diagnostic.severity.INFO]  = "DiagnosticInfo",
   [vim.diagnostic.severity.HINT]  = "DiagnosticHint",
 }
+-- echo the diagnostic under the cursor; multi-line messages are flattened and truncated
+-- to the available width so they never trigger the hit-enter prompt
 vim.api.nvim_create_autocmd("CursorMoved", {
   callback = function()
     local cursor = vim.api.nvim_win_get_cursor(0)
     local lnum = cursor[1] - 1
     local col  = cursor[2]
-    local diags = vim.diagnostic.get(0, { lnum = lnum })
-    for _, d in ipairs(diags) do
+    for _, d in ipairs(vim.diagnostic.get(0, { lnum = lnum })) do
       if col >= d.col and col <= (d.end_col or d.col) then
-        local hl = severity_hl[d.severity] or "DiagnosticWarn"
-        vim.api.nvim_echo({{ d.message, hl }}, false, {})
+        local msg = d.message:gsub("%s*\n%s*", " ")
+        local width = vim.v.echospace - 1
+        if vim.fn.strdisplaywidth(msg) > width then
+          msg = vim.fn.strcharpart(msg, 0, width - 1) .. "…"
+        end
+        vim.api.nvim_echo({{ msg, severity_hl[d.severity] or "DiagnosticWarn" }}, false, {})
         return
       end
     end
